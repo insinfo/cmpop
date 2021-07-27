@@ -1,3 +1,8 @@
+example to demonstrate a bug
+
+https://github.com/dart-lang/build/issues/3150
+
+```console
 PS D:\MyDartProjects\cmpop_copy\cmpop_browser> webdev build
 [INFO] Reading cached asset graph completed, took 665ms
 [INFO] Checking for updates since last build completed, took 1.0s
@@ -44,3 +49,4 @@ PS D:\MyDartProjects\cmpop_copy\cmpop_browser> webdev build
 [INFO] Writing asset manifest completed, took 5ms
 [INFO] Succeeded after 7.0s with 0 outputs (0 actions)
 PS D:\MyDartProjects\cmpop_copy\cmpop_browser> 
+```
