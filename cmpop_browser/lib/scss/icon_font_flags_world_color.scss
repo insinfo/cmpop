@@ -1,0 +1,12 @@
+@font-face {
+    font-family: "flags";
+    src: url(../assets/fonts/flags_world_color/flags_world_color_46ab.woff2) format("woff2"),
+        url(../assets/fonts/flags_world_color/flags_world_color_6da8.woff) format("woff"),
+        url(../assets/fonts/flags_world_color/flags_world_color_n6qO.ttf) format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
+.font-family-flags {
+    font-family: flags;
+}

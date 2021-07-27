@@ -1,0 +1,293 @@
+<div #container>
+
+    <div class="container">
+        <div class="py-5 text-center">
+            <img class="d-block mx-auto mb-4" src="/assets/images/logo/logo-pop-2.svg" alt="" width="150">
+            <h2>Formulário de candidatura de conselheiro</h2>
+            <p class="lead">Candidatura para o Conselho Municipal de Planejamento e Orçamento Participativo de Rio das
+                Ostras - 2021</p>
+        </div>
+
+        <div *ngIf="formularioState == FormularioState.inicio">
+            <form class="card" (submit)="validarForm()" #formularioInventario="ngForm" customvalidator="global">
+                <div class="card-body">
+                    <div class="row g-3 align-items-center mb-3">
+                        <div class="col-auto">
+                            <label class="col-form-label">Tipo Pessoa:</label>
+                        </div>
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input required [(ngModel)]="pessoaFisica" value="fisica" id="fisica" name="tipoPessoa"
+                                    type="radio" class="form-check-input" checked="">
+                                <label class="form-check-label" for="fisica">Física</label>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <div class="form-check">
+                                <input required [(ngModel)]="pessoaJuridica" value="juridica" id="juridica"
+                                    name="tipoPessoa" type="radio" class="form-check-input">
+                                <label class="form-check-label" for="juridica">Jurídica</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="row g-3 mb-3">
+                        <div class=" col-md-5">
+                            <label class="form-label">Nome Candidato/Representante:*</label>
+                            <!--Associação-->
+                            <input [(ngModel)]="formulario.nome" type="text" [maxlength]="250" class="form-control"
+                                required>
+                        </div>
+                        <div class=" col-md-3">
+                            <label class="form-label">RG:*</label>
+                            <input [(ngModel)]="formulario.rg" type="text" [maxlength]="250" class="form-control"
+                                required>
+                        </div>
+                        <div class=" col-md-3">
+                            <label class="form-label">CPF:*</label>
+                            <input [(ngModel)]="formulario.cpf" type="text" textMask="xxx.xxx.xxx-xx"
+                                data-validation-type="cpf" class="form-control" required>
+                        </div>
+                        <div class=" col-md-3">
+                            <label class="form-label">Data de nascimento:*</label>
+                            <input [(ngModel)]="formulario.dataNascimento" type="date" class="form-control" required>
+                        </div>
+
+                        <div class=" col-md-5" *ngIf="formulario.tipoPessoa == 'juridica'">
+                            <label class="form-label">Nome Fantasia:*</label>
+                            <input [(ngModel)]="formulario.nomeFantasia" type="text" [maxlength]="250"
+                                class="form-control" [required]="formulario.tipoPessoa == 'juridica'">
+                        </div>
+                        <div class=" col-md-4" *ngIf="formulario.tipoPessoa == 'juridica'">
+                            <label class="form-label">Razão Social:*</label>
+                            <input [(ngModel)]="formulario.razaoSocial" type="text" [maxlength]="250"
+                                class="form-control" [required]="formulario.tipoPessoa == 'juridica'">
+                        </div>
+                        <div class=" col-md-3" *ngIf="formulario.tipoPessoa == 'juridica'">
+                            <label class="form-label">CNPJ:*</label>
+                            <input [(ngModel)]="formulario.cnpj" type="text" class="form-control" required
+                                data-validation-type="cnpj" textMask="xx.xxx.xxx/xxxx-xx">
+                        </div>
+                        <div class=" col-md-4">
+                            <label class="form-label">Logradouro:*</label>
+                            <input [(ngModel)]="formulario.logradouro" type="text" class="form-control" required>
+                        </div>
+                        <div class=" col-md-2">
+                            <label class="form-label">Número:*</label>
+                            <input [(ngModel)]="formulario.numero" type="text" class="form-control" required>
+                        </div>
+                        <div class=" col-md-5">
+                            <label class="form-label">Bairro:*</label>
+                            <select [(ngModel)]="formulario.bairro" class="form-select">
+                                <option value="bairro" *ngFor="let bairro of bairros">{{bairro}}</option>
+                            </select>
+                        </div>
+                        <div class=" col-md-5">
+                            <label class="form-label">Complemento:</label>
+                            <input [(ngModel)]="formulario.complemento" type="text" class="form-control">
+                        </div>
+                        <div class=" col-md-4">
+                            <label class="form-label">E-mail:</label>
+                            <input [(ngModel)]="formulario.email" type="text" class="form-control">
+                        </div>
+                        <div class=" col-md-3">
+                            <label class="form-label">Telefone Fixo:</label>
+                            <input [(ngModel)]="formulario.telefoneFixo" textMask="(xx) xxxx-xxxx" type="text"
+                                class="form-control">
+                        </div>
+                        <div class=" col-md-3">
+                            <label class="form-label">Telefone Celular:</label>
+                            <input [(ngModel)]="formulario.telefoneCelular" textMask="(xx) xxxxx-xxxx" type="text"
+                                class="form-control">
+                        </div>
+                    </div>
+                    <!-- <hr class="my-4">-->
+                    <h4 class="mb-3">Documentos Obrigatórios*</h4>
+                    <ul>
+                        <li>Pessoa física
+                            <ul>
+                                <li> RG </li>
+                                <li> CPF </li>
+                                <li> Comprovante de Residência </li>
+                            </ul>
+                        </li>
+                        <li>Associação de Moradores
+                            <ul>
+                                <li> RG do representante </li>
+                                <li> CPF do representante</li>
+                                <li> Comprovante de Residência do representante</li>
+                                <li> Cartão CNPJ</li>
+                                <li> Comprovante de Inscrição e de Situação Cadastral - CNPJ (Ativa) </li>
+                                <li> Ata da assembléia que elegeu o representante </li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <!-- <input #inputFile (change)="fileChangeHandle(inputFile)" type="file" class="form-control"
+                                multiple required>-->
+                            <file-upload (change)="fileChangeHandle($event)" [limitSizeInMB]="24"
+                                [files]="formulario.files">
+                            </file-upload>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4"></div>
+                        <div class="col-md-4">
+                            <button class="w-100 btn btn-primary btn-lg" type="submit">Confirmar</button>
+                        </div>
+                        <div class="col-md-4 d-flex justify-content-end">
+                            <small>*&nbsp;Obrigatório</small>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br>
+            <br>
+        </div>
+
+        <div *ngIf="formularioState == FormularioState.validacao">
+
+            <h4 class="mb-3">Confirme os dados abaixo*</h4>
+            <div class="row g-3 mb-3">
+                <div class=" col-md-5">
+                    <label class="form-label">Nome Candidato/Representante:*</label>
+                    <div class="form-control">
+                        {{formulario.nome}}
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">RG:*</label>
+                    <div class="form-control">
+                        {{formulario.rg}}
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">CPF:*</label>
+                    <div class="form-control">
+                        {{formulario.cpf}}
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">Data de nascimento:*</label>
+                    <div class="form-control">
+                        {{formulario.dataNascimento | date: 'dd/MM/yyyy'}}
+                    </div>
+                </div>
+                <div class=" col-md-5" *ngIf="formulario.tipoPessoa == 'juridica'">
+                    <label class="form-label">Nome Fantasia:*</label>
+                    <div class="form-control">
+                        {{formulario.nomeFantasia}}
+                    </div>
+                </div>
+                <div class=" col-md-4" *ngIf="formulario.tipoPessoa == 'juridica'">
+                    <label class="form-label">Razão Social:*</label>
+                    <div class="form-control">{{formulario.razaoSocial}}</div>
+                </div>
+                <div class=" col-md-3" *ngIf="formulario.tipoPessoa == 'juridica'">
+                    <label class="form-label">CNPJ:*</label>
+                    <div class="form-control">
+                        {{formulario.cnpj}}
+                    </div>
+                </div>
+                <div class=" col-md-4">
+                    <label class="form-label">Logradouro:*</label>
+                    <div class="form-control">
+                        {{formulario.logradouro}}
+                    </div>
+                </div>
+                <div class=" col-md-2">
+                    <label class="form-label">Número:*</label>
+                    <div class="form-control">
+                        {{formulario.numero}}
+                    </div>
+                </div>
+                <div class=" col-md-5">
+                    <label class="form-label">Bairro:*</label>
+                    <div class="form-control">
+                        {{formulario.bairro}}
+                    </div>
+                </div>
+                <div class=" col-md-5">
+                    <label class="form-label">Complemento:</label>
+                    <div class="form-control">
+                        {{formulario.complemento}}
+                    </div>
+                </div>
+
+                <div class=" col-md-4">
+                    <label class="form-label">E-mail:</label>
+                    <div class="form-control">
+                        {{formulario.email}}
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">Telefone Fixo:</label>
+                    <div class="form-control">
+                        {{formulario.telefoneFixo}}
+                    </div>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">Telefone Celular:</label>
+                    <div class="form-control">
+                        {{formulario.telefoneCelular}}
+                    </div>
+                </div>
+            </div>
+            <br><br><br>
+            <form (submit)="enviaForm()">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="custom-control custom-checkbox">
+                            <input [(ngModel)]="euConfirmoOsDados" type="checkbox" class="custom-control-input"
+                                id="customCheck1">
+                            <label class="form-label" for="customCheck1">Eu sou responsável
+                                por todas as
+                                informações fornecidas aqui.</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <!--size="compact"-->
+                        <angular-recaptcha [(ngModel)]="recaptchaValue" (expire)="recaptchaValue = null"
+                            [key]="recaptchaKey" auto-render>
+                        </angular-recaptcha>
+                    </div>
+                </div>
+                <br><br>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div style="display: flex;align-items: center;justify-content: center;margin-top: 10px;">
+                            <button class="btn btn-primary btn-lg" type="submit">Enviar Formulário
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <br><br><br><br>
+        </div>
+
+        <div *ngIf="formularioState == FormularioState.fim">
+            <section class="text-center pt-6">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12  ">
+                            <br>
+                            <div class="alert alert-success" role="alert">
+                                <h2 class="title-p3 mt-30">
+                                    Formulário enviado com sucesso!
+                                </h2>
+                            </div>
+                            <br><br>
+                            <!--<a class="btn btn-primary btn-lg" href="#/home">Voltar para home
+                            </a>-->
+
+                            <a class="btn btn-primary btn-lg" href="https://www.riodasostras.rj.gov.br">Ir para o site da prefeitura</a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <br><br><br><br>
+        </div>
+
+    </div>
+</div>

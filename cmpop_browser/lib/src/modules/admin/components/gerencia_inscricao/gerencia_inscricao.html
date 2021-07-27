@@ -1,0 +1,423 @@
+<div class="body p-3" #container>
+    <div class="standard-toolbar">
+        <div class="flex-start">
+            <a (click)="adicionar()" title="adicionar">
+                <i class="material-icons ">note_add</i>
+            </a>
+            <a (click)="reset()" title="atualizar">
+                <i class="material-icons ">refresh</i>
+            </a>
+        </div>
+        <div class="flex-center">
+            <input #inputSearch (keydown.enter)="searchEnterHandle($event.target.value)"
+                class="input-search form-control" type="text" placeholder="Buscar">
+        </div>
+        <div class="flex-end">
+            <select #select class="form-select" style="width:max-content;" (change)="itemsPerPageChange(select)">
+                <option value="1">1</option>
+                <option value="5">5</option>
+                <option value="20">20</option>
+                <option value="40" selected>40</option>
+                <option value="100">100</option>
+                <option value="200">200</option>
+            </select>
+        </div>
+    </div>
+
+    <!--teste inicio --
+  
+        <div class="row row--top-20">
+            <div class="col-md-12">
+                <div class="table-container">
+                    <table class="table ">
+                        <thead class="table__thead ">
+                            <tr class="">
+                                <th class="table__th "><input class="table__select-row " id="selectAll" type="checkbox">
+                                </th>
+                                <th class="table__th ">Name</th>
+                                <th class="table__th ">Policy</th>
+                                <th class="table__th ">Policy status</th>
+                                <th class="table__th ">Destination</th>
+                                <th class="table__th ">Status</th>
+                                <th class="table__th ">Progress</th>
+                                <th class="table__th "></th>
+                            </tr>
+                        </thead>
+                        <tbody class="table__tbody ">
+                            <tr class="table-row table-row--chris ">
+                                <td class="table-row__td "><input class="table__select-row " id="" type="checkbox"></td>
+                                <td class="table-row__td ">
+                                    <div class="table-row__img "></div>
+                                    <div class="table-row__info ">
+                                        <p class="table-row__name ">Christin Ericssen</p><span
+                                            class="table-row__small ">CFO</span>
+                                    </div>
+                                </td>
+                                <td class="table-row__td " data-column="Policy">
+                                    <div class="">
+                                        <p class="table-row__policy ">$5,000</p><span class="table-row__small ">Basic
+                                            Policy</span>
+                                    </div>
+                                </td>
+                                <td class="table-row__td " data-column="Policy status">
+                                    <p class="table-row__p-status status--green status ">Approved</p>
+                                </td>
+                                <td class="table-row__td " data-column="Destination">Huston, US</td>
+                                <td class="table-row__td " data-column="Status">
+                                    <p class="table-row__status status--green status ">Active</p>
+                                </td>
+                                <td class="table-row__td " data-column="Progress">
+                                    <p class="table-row__progress status--blue status ">On Track</p>
+                                </td>
+                                <td class="table-row__td "><svg class="table-row__edit " data-placement="bottom"
+                                        data-toggle="tooltip" space="preserve"
+                                        style="enable-background:new 0 0 512.001 512.001;" title="Edit" version="1.1"
+                                        viewBox="0 0 512.001 512.001" x="0px" xlink="http://www.w3.org/1999/xlink"
+                                        xmlns="http://www.w3.org/2000/svg" y="0px">
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M496.063,62.299l-46.396-46.4c-21.2-21.199-55.69-21.198-76.888,0l-18.16,18.161l123.284,123.294l18.16-18.161    C517.311,117.944,517.314,83.55,496.063,62.299z"
+                                                    style="fill: rgb(1, 185, 209);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M22.012,376.747L0.251,494.268c-0.899,4.857,0.649,9.846,4.142,13.339c3.497,3.497,8.487,5.042,13.338,4.143    l117.512-21.763L22.012,376.747z"
+                                                    style="fill: rgb(1, 185, 209);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <polygon
+                                                    points="333.407,55.274 38.198,350.506 161.482,473.799 456.691,178.568   "
+                                                    style="fill: rgb(1, 185, 209);" class=""></polygon>
+                                            </g>
+                                        </g>
+                                      
+                                    </svg><svg class="table-row__bin " data-placement="bottom" data-toggle="tooltip"
+                                        space="preserve" style="enable-background:new 0 0 512 512;" title="Delete"
+                                        version="1.1" viewBox="0 0 512 512" x="0px" xlink="http://www.w3.org/1999/xlink"
+                                        xmlns="http://www.w3.org/2000/svg" y="0px">
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M436,60h-90V45c0-24.813-20.187-45-45-45h-90c-24.813,0-45,20.187-45,45v15H76c-24.813,0-45,20.187-45,45v30    c0,8.284,6.716,15,15,15h16.183L88.57,470.945c0.003,0.043,0.007,0.086,0.011,0.129C90.703,494.406,109.97,512,133.396,512    h245.207c23.427,0,42.693-17.594,44.815-40.926c0.004-0.043,0.008-0.086,0.011-0.129L449.817,150H466c8.284,0,15-6.716,15-15v-30    C481,80.187,460.813,60,436,60z M196,45c0-8.271,6.729-15,15-15h90c8.271,0,15,6.729,15,15v15H196V45z M393.537,468.408    c-0.729,7.753-7.142,13.592-14.934,13.592H133.396c-7.792,0-14.204-5.839-14.934-13.592L92.284,150h327.432L393.537,468.408z     M451,120h-15H76H61v-15c0-8.271,6.729-15,15-15h105h150h105c8.271,0,15,6.729,15,15V120z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M256,180c-8.284,0-15,6.716-15,15v212c0,8.284,6.716,15,15,15s15-6.716,15-15V195C271,186.716,264.284,180,256,180z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M346,180c-8.284,0-15,6.716-15,15v212c0,8.284,6.716,15,15,15s15-6.716,15-15V195C361,186.716,354.284,180,346,180z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M166,180c-8.284,0-15,6.716-15,15v212c0,8.284,6.716,15,15,15s15-6.716,15-15V195C181,186.716,174.284,180,166,180z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        
+                                    </svg></td>
+                            </tr>
+                            <tr class="table-row table-row--june table-row--red ">
+                                <td class="table-row__td ">
+                                    <div class="table-row--overdue "></div><input class="table__select-row " id=""
+                                        type="checkbox">
+                                </td>
+                                <td class="table-row__td ">
+                                    <div class="table-row__img "></div>
+                                    <div class="table-row__info ">
+                                        <p class="table-row__name ">June Simmons</p><span
+                                            class="table-row__small ">Social content manager</span>
+                                    </div>
+                                </td>
+                                <td class="table-row__td " data-column="Policy">
+                                    <div class="">
+                                        <p class="table-row__policy ">$5,000</p><span class="table-row__small ">Basic
+                                            Policy</span>
+                                    </div>
+                                </td>
+                                <td class="table-row__td " data-column="Policy status">
+                                    <p class="table-row__p-status status--red status ">Rejected</p>
+                                </td>
+                                <td class="table-row__td " data-column="destination">Huston, US</td>
+                                <td class="table-row__td " data-column="status">
+                                    <p class="table-row__status ">Rejected</p>
+                                </td>
+                                <td class="table-row__td " data-column="progress">
+                                    <p class="table-row__progress status status--red ">Overdue</p>
+                                </td>
+                                <td class="table-row__td "><svg class="table-row__edit " data-placement="bottom"
+                                        data-toggle="tooltip" space="preserve"
+                                        style="enable-background:new 0 0 512.001 512.001;" title="Edit" version="1.1"
+                                        viewBox="0 0 512.001 512.001" x="0px" xlink="http://www.w3.org/1999/xlink"
+                                        xmlns="http://www.w3.org/2000/svg" y="0px">
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M496.063,62.299l-46.396-46.4c-21.2-21.199-55.69-21.198-76.888,0l-18.16,18.161l123.284,123.294l18.16-18.161    C517.311,117.944,517.314,83.55,496.063,62.299z"
+                                                    style="fill: rgb(1, 185, 209);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M22.012,376.747L0.251,494.268c-0.899,4.857,0.649,9.846,4.142,13.339c3.497,3.497,8.487,5.042,13.338,4.143    l117.512-21.763L22.012,376.747z"
+                                                    style="fill: rgb(1, 185, 209);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <polygon
+                                                    points="333.407,55.274 38.198,350.506 161.482,473.799 456.691,178.568   "
+                                                    style="fill: rgb(1, 185, 209);" class=""></polygon>
+                                            </g>
+                                        </g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                    </svg><svg class="table-row__bin " data-placement="bottom" data-toggle="tooltip"
+                                        space="preserve" style="enable-background:new 0 0 512 512;" title="Delete"
+                                        version="1.1" viewBox="0 0 512 512" x="0px" xlink="http://www.w3.org/1999/xlink"
+                                        xmlns="http://www.w3.org/2000/svg" y="0px">
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M436,60h-90V45c0-24.813-20.187-45-45-45h-90c-24.813,0-45,20.187-45,45v15H76c-24.813,0-45,20.187-45,45v30    c0,8.284,6.716,15,15,15h16.183L88.57,470.945c0.003,0.043,0.007,0.086,0.011,0.129C90.703,494.406,109.97,512,133.396,512    h245.207c23.427,0,42.693-17.594,44.815-40.926c0.004-0.043,0.008-0.086,0.011-0.129L449.817,150H466c8.284,0,15-6.716,15-15v-30    C481,80.187,460.813,60,436,60z M196,45c0-8.271,6.729-15,15-15h90c8.271,0,15,6.729,15,15v15H196V45z M393.537,468.408    c-0.729,7.753-7.142,13.592-14.934,13.592H133.396c-7.792,0-14.204-5.839-14.934-13.592L92.284,150h327.432L393.537,468.408z     M451,120h-15H76H61v-15c0-8.271,6.729-15,15-15h105h150h105c8.271,0,15,6.729,15,15V120z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M256,180c-8.284,0-15,6.716-15,15v212c0,8.284,6.716,15,15,15s15-6.716,15-15V195C271,186.716,264.284,180,256,180z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M346,180c-8.284,0-15,6.716-15,15v212c0,8.284,6.716,15,15,15s15-6.716,15-15V195C361,186.716,354.284,180,346,180z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class="">
+                                            <g class="">
+                                                <path
+                                                    d="M166,180c-8.284,0-15,6.716-15,15v212c0,8.284,6.716,15,15,15s15-6.716,15-15V195C181,186.716,174.284,180,166,180z"
+                                                    style="fill: rgb(158, 171, 180);" class=""></path>
+                                            </g>
+                                        </g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                        <g class=""></g>
+                                    </svg></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+
+    <!--teste final -->
+    <div class="card">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table align-middle">
+                    <thead class="table-light">
+                        <tr>
+                            <th scope="col">Nome</th>
+                            <th scope="col">CPF</th>
+                            <th scope="col">RG</th>
+                            <th scope="col">Razão Social</th>
+                            <th scope="col">Nome Fantasia</th>
+                            <th scope="col">Cadastrado em</th>
+                            <th scope="col">CNPJ</th>
+                            <th scope="col">Editar</th>
+                            <th scope="col">Remover</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let it of items">
+                            <td>{{it.nome}}</td>
+                            <td>{{it.cpf}}</td>
+                            <td>{{it.rg}}</td>
+                            <td>{{it.razaoSocial}}</td>
+                            <td>{{it.nomeFantasia}}</td>
+                            <td>{{it.dataCadastro | date : 'dd/MM/yyyy' }}</td>
+                            <td>{{it.cnpj}}</td>
+                            <td>
+                                <a class="action-btn" (click)="editar(it)" title="editar">
+                                    <i class="material-icons">edit</i>
+                                </a>
+                            </td>
+                            <td>
+                                <a class="action-btn" (click)="remover(it)" title="deletar">
+                                    <i class="material-icons">clear</i>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!--paginação-->
+    <pagination-component #pagination [filtros]="filtros" [totalRecords]="totalRecords" (onChange)="changePage($event)">
+    </pagination-component>
+    <br>
+</div>
+
+<modal [(visible)]="showModal">
+    <material-dialog headered class="fullscreen-dialog" [class.fullscreen-mode]="isInFullscreenMode"
+        [listenForFullscreenChanges]="true" (fullscreenMode)="isInFullscreenMode = $event">
+        <div header>
+            <h1>Formulário</h1>
+            <material-button icon (trigger)="showModal = false">
+                <material-icon icon="close"></material-icon>
+            </material-button>
+        </div>
+        <div *ngIf="formulario != null">
+            <!--form inicio-->
+            <div class="row g-3 align-items-center mb-3">
+                <div class="col-auto">
+                    <label class="col-form-label">Tipo Pessoa:</label>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check">
+                        <input required [(ngModel)]="pessoaFisica" value="fisica" id="fisica" name="tipoPessoa"
+                            type="radio" class="form-check-input" checked="">
+                        <label class="form-check-label" for="fisica">Física</label>
+                    </div>
+                </div>
+                <div class="col-auto">
+                    <div class="form-check">
+                        <input required [(ngModel)]="pessoaJuridica" value="juridica" id="juridica" name="tipoPessoa"
+                            type="radio" class="form-check-input">
+                        <label class="form-check-label" for="juridica">Jurídica</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-3 mb-3">
+                <div class=" col-md-5">
+                    <label class="form-label">Nome Candidato/Representante:*</label>
+                    <!--Associação-->
+                    <input [(ngModel)]="formulario.nome" type="text" [maxlength]="250" class="form-control" required>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">RG:*</label>
+                    <input [(ngModel)]="formulario.rg" type="text" [maxlength]="250" class="form-control" required>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">CPF:*</label>
+                    <input [(ngModel)]="formulario.cpf" type="text" textMask="xxx.xxx.xxx-xx" data-validation-type="cpf"
+                        class="form-control" required>
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">Data de nascimento:*</label>
+                    <input [(ngModel)]="formulario.dataNascimento" type="date" class="form-control" required>
+                </div>
+
+                <div class=" col-md-5" *ngIf="formulario.tipoPessoa == 'juridica'">
+                    <label class="form-label">Nome Fantasia:*</label>
+                    <input [(ngModel)]="formulario.nomeFantasia" type="text" [maxlength]="250" class="form-control"
+                        [required]="formulario.tipoPessoa == 'juridica'">
+                </div>
+                <div class=" col-md-4" *ngIf="formulario.tipoPessoa == 'juridica'">
+                    <label class="form-label">Razão Social:*</label>
+                    <input [(ngModel)]="formulario.razaoSocial" type="text" [maxlength]="250" class="form-control"
+                        [required]="formulario.tipoPessoa == 'juridica'">
+                </div>
+                <div class=" col-md-3" *ngIf="formulario.tipoPessoa == 'juridica'">
+                    <label class="form-label">CNPJ:*</label>
+                    <input [(ngModel)]="formulario.cnpj" type="text" class="form-control" required
+                        data-validation-type="cnpj" textMask="xx.xxx.xxx/xxxx-xx">
+                </div>
+                <div class=" col-md-4">
+                    <label class="form-label">Logradouro:*</label>
+                    <input [(ngModel)]="formulario.logradouro" type="text" class="form-control" required>
+                </div>
+                <div class=" col-md-2">
+                    <label class="form-label">Número:*</label>
+                    <input [(ngModel)]="formulario.numero" type="text" class="form-control" required>
+                </div>
+                <div class=" col-md-5">
+                    <label class="form-label">Bairro:*</label>
+                    <select [(ngModel)]="formulario.bairro" class="form-select">
+                        <option value="bairro" *ngFor="let bairro of bairros">{{bairro}}</option>
+                    </select>
+                </div>
+                <div class=" col-md-5">
+                    <label class="form-label">Complemento:</label>
+                    <input [(ngModel)]="formulario.complemento" type="text" class="form-control">
+                </div>
+                <div class=" col-md-4">
+                    <label class="form-label">E-mail:</label>
+                    <input [(ngModel)]="formulario.email" type="text" class="form-control">
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">Telefone Fixo:</label>
+                    <input [(ngModel)]="formulario.telefoneFixo" textMask="(xx) xxxx-xxxx" type="text"
+                        class="form-control">
+                </div>
+                <div class=" col-md-3">
+                    <label class="form-label">Telefone Celular:</label>
+                    <input [(ngModel)]="formulario.telefoneCelular" textMask="(xx) xxxxx-xxxx" type="text"
+                        class="form-control">
+                </div>
+            </div>
+            <!-- <hr class="my-4">-->
+
+            <div class="row">
+                <div class="col-md-12">
+                    <file-upload (change)="fileChangeHandle($event)" [limitSizeInMB]="24" [files]="formulario.files">
+                    </file-upload>
+                </div>
+            </div>
+
+            <!--form fim-->
+        </div>
+        <div footer class="form-footer">
+            <button class="btn btn-primary" type="button" (click)="cancelar()">Cancelar</button>
+            <button class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
+        </div>
+    </material-dialog>
+</modal>

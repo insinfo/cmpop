@@ -1,0 +1,116 @@
+<div class="body p-10" #container [class.on-modal]="onModal">
+    <!---->
+    <div class="standard-toolbar">
+        <div class="flex-start">
+            <a (click)="openAddModal()">
+                <i class="material-icons">note_add</i>
+            </a>
+            <!--<a class="nav-item nav-link active">
+                        <i class="material-icons">delete</i>
+                    </a>
+                   
+                    
+                    <a class="nav-item nav-link active">
+                        <i class="material-icons">edit</i>
+                    </a>
+                   -->
+            <a (click)="refresh()">
+                <i class="material-icons">refresh</i>
+            </a>
+            <a (click)="toogleSelectAll()">
+                <i class="material-icons">done_all</i>
+            </a>
+        </div>
+        <div class="flex-center">
+            <input #inputSearch (keydown.enter)="searchEnterHandle($event.target.value)" class="input-search form-control"
+                type="text" placeholder="Buscar">
+        </div>
+        <div class="flex-end">
+            <!--
+                <a>&#5176;</a>
+                <a>&#5171;</a>
+            -->
+            <select #select class="select-items-page form-control" (change)="itemsPerPageChange(select)">
+                <option value="5">5</option>
+                <option value="20" selected>20</option>
+                <option value="40">40</option>
+            </select>
+            <a (click)="backPage()">
+                <i class="material-icons">keyboard_arrow_left</i>
+            </a>
+            <a (click)="nextPage()">
+                <i class="material-icons">keyboard_arrow_right</i>
+            </a>
+        </div>
+    </div>
+    <div class="auto-grid">
+        <div class="grid-item" *ngFor="let midia of midias" [class.selected]="midia.isSelected"
+            (click)="selectMidia(midia)" (mouseenter)="midia.isHover = true" (mouseleave)="midia.isHover = false">
+
+            <!-- image -->
+            <img *ngIf="midia?.mimeType?.startsWith('image/') == true" class="grid-item-img" src="{{midia.link}}">
+            <video class="grid-item-video" *ngIf="midia?.mimeType?.startsWith('video/') == true"
+                src="{{midia.link}}"></video>
+
+            <div class="grid-item-file" *ngIf="midia?.mimeType?.startsWith('application') == true">
+                <!--  <i class="icon-file-11"></i>-->
+                <i class="material-icons">description</i>
+            </div>
+
+            <div class="grid-item-nav" [class.visible]="midia.isHover">
+                <a class="grid-item-nav-btn" (click)="deleteItem(midia, $event)" title="Deletar">
+                    <i class="material-icons grid-item-nav-btn-icon">delete</i>
+                </a>
+                <a class="grid-item-nav-btn" (click)="editItem(midia, $event)" title="Editar">
+                    <i class="material-icons grid-item-nav-btn-icon">edit</i>
+                </a>
+                <a class="grid-item-nav-btn" (click)="maximizarItem(midia, $event)" title="Maximizar">
+                    <i class="material-icons grid-item-nav-btn-icon">open_in_full</i>
+                </a>
+            </div>
+            <div [class.grid-item-check]="midia.isSelected">
+                <span></span>
+            </div>
+            <div class="grid-item-title">
+                <span>{{midia.title | truncate:20}}</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<modal [(visible)]="showModal">
+    <material-dialog class="basic-dialog">
+        <div class="" #modalContainer>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label>Título:</label>
+                    <input [(ngModel)]="midiaSelected.title" type="text" [maxlength]="250" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label>Descrição:</label>
+                    <textarea [(ngModel)]="midiaSelected.description" rows="3" class="form-control"></textarea>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-sm-12">
+                    <label>Imagem:</label>
+                    <!-- [(ngModel)]="midiaSelected.file"-->
+                    <input (change)="handleFileUpload($event.target.files)" type="file" class="form-control">
+                </div>
+            </div>
+            <div style="display: flex;align-items: center;">
+                <div>Corrigir imagem:</div>
+                <div class="custom-checkbox">
+                    <input id="checkboxComercioAtivo2" [(ngModel)]="resizeImage" type="checkbox">
+                    <label for="checkboxComercioAtivo2"></label>
+                </div>
+            </div>
+        </div>
+        <div footer class="form-footer">
+            <button type="button" class="btn btn-primary" (click)="cancelar()">Cancelar</button>
+            <button type="button" class="btn btn-primary" (click)="salvar()">Salvar</button>
+        </div>
+    </material-dialog>
+</modal>

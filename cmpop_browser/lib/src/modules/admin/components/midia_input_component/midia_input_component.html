@@ -1,0 +1,28 @@
+<div class="midias-input-wrapper" (click)="openModalGaleria()">
+    <div class="tag" *ngIf="midia != null">
+        <!-- image -->
+        <img class="item-image" *ngIf="midia?.mimeType?.startsWith('image/') == true" src="{{midia?.link}}"
+            title="{{midia.title  |  truncate:20}}">
+        <!-- video -->
+        <video class="item-video" *ngIf="midia?.mimeType?.startsWith('video/') == true" src="{{midia?.link}}"></video>
+        <!-- outros arquivos -->
+        <div class="item-file" *ngIf="midia?.mimeType?.startsWith('application') == true">
+            <i class="material-icons">description</i>
+        </div>
+        <a (click)="removeMidia(midia, $event)">×</a>
+    </div>
+</div>
+<modal [(visible)]="showModalGaleria">
+    <material-dialog headered class="fullscreen-dialog" [listenForFullscreenChanges]="true">
+        <div header>
+            <h1>Galeria</h1>
+            <i class="material-icons modal-close-btn" (click)="showModalGaleria = false">close</i>
+        </div>
+        <galeria #galeria [onModal]="true" [isSingleSelect]="true" (onSelect)="onSelectMidia($event)"></galeria>
+        <div footer class="form-footer">
+            <button type="button" class="btn btn-primary" (click)="closeGaleria()">
+                Ok
+            </button>
+        </div>
+    </material-dialog>
+</modal>

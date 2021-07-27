@@ -1,0 +1,46 @@
+<div class="nav-treeview">
+    <input class="nav-treeview-item" #inputsearch (keydown.enter)="searchKeydownEnter(inputsearch)"
+        autocomplete="new-password" type="text" placeholder="{{searchPlaceholder}}">
+    <a class="nav-treeview-item" [hidden]="!isMultiSelectable" (click)="selectAllToogleAction()">
+        <i [class.icon-checkbox-checked]="isSelectAll" [class.icon-checkbox-unchecked]="!isSelectAll"></i>
+    </a>
+    <a class="nav-treeview-item" (click)="expandAllToogleAction()">
+        <i class="icon-menu-open2" [class.icon-menu-open2]="isExpandAll" [class.icon-menu-close]="!isExpandAll"></i>
+    </a>
+    <a class="nav-treeview-item" [hidden]="!isMultiSelectable" (click)="unselectAllAction()" title="Remover seleção">
+        <i class="icon-diff-removed"></i>
+    </a>
+</div>
+<br>
+<div #treeContainer class="tree-checkbox  ">
+    <ul *ngIf="imperativeMode == false" class="ui-fancytree fancytree-container fancytree-plain">
+        <template #recursiveList let-list>
+            <li *ngFor="let item of list; let i = index">
+                <span [hidden]="item.treeViewNodeFilter == false" [class.fancytree-node]="true"
+                    [class.fancytree-selected]="item.treeViewNodeIsSelected"
+                    [class.fancytree-has-children]="item.filhos.isNotEmpty " [class.fancytree-folder]="false"
+                    [class.fancytree-exp-c]="item.filhos.isNotEmpty "
+                    [class.fancytree-exp-n]="item.filhos.isNotEmpty == false"
+                    [class.fancytree-ico-ef]="item.treeViewNodeIsCollapse==false"
+                    [class.fancytree-ico-cf]="item.treeViewNodeIsCollapse==true">
+                    <span (click)="item.treeViewNodeIsCollapse=!item.treeViewNodeIsCollapse" role="button"
+                        class="fancytree-expander"></span>
+
+                    <span role="checkbox" class="fancytree-checkbox" *ngIf="isMultiSelectable"
+                        (click)="multiSelectHandle(item)"></span>
+
+                    <span role="presentation" class="fancytree-icon"></span>
+                    <span class="fancytree-title"
+                        [class.bg-success]="item.treeViewNodeIsSelected && isMultiSelectable==false"
+                        (click)="oneSelectHandle(item)">{{item.linkLabelPt}}</span>
+                </span>
+                <ul *ngIf="item.filhos?.isNotEmpty == true"
+                    [style.display]="item.treeViewNodeIsCollapse==false  ? 'block': 'none'" role="group">
+                    <template [ngTemplateOutlet]="recursiveList" [ngTemplateOutletValue]="item.filhos">
+                    </template>
+                </ul>
+            </li>
+        </template>
+        <template [ngTemplateOutlet]="recursiveList" [ngTemplateOutletValue]="list"></template>
+    </ul>
+</div>

@@ -1,0 +1,227 @@
+/*
+  AUTO GRID
+  Set the minimum item size with `--auto-grid-min-size` and you'll
+  get a fully responsive grid with no media queries.
+*/
+.auto-grid {
+    --auto-grid-min-size: 16rem;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--auto-grid-min-size), 1fr));
+    grid-gap: 0.7rem;
+}
+.selected {
+    border: solid 2px #4285f4 !important;
+}
+.visible {
+    opacity: 1 !important;
+}
+
+.grid-item {
+    /* padding: 0;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; // Centering y-axis 
+    align-items: center; // Centering x-axis 
+    */
+    border: solid 2px transparent;
+    position: relative;
+    max-height: 170px;
+    //overflow: hidden;
+    //background-color: white;
+    .grid-item-nav {
+        opacity: 0;
+        transition: opacity ease-in 200ms;
+        position: absolute;
+        width: 100%;
+        top: 0;
+        left: 0;
+        display: flex;
+        align-content: flex-end;
+        flex-direction: row;
+        justify-content: flex-end;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.7) 0%, rgba(189, 72, 177, 0) 100%);
+
+        .grid-item-nav-btn {
+            color: white;
+            list-style: none;
+            cursor: pointer;
+            padding: 0.5rem;
+            opacity: 0.9;
+            &:hover {
+                opacity: 1;
+                color: #fffb0d;
+            }
+            .grid-item-nav-btn-icon {
+                font-size: 22px;
+            }
+        }
+    }
+    .grid-item-img {
+        object-fit: cover;
+        width: 100%;
+        height: 100%;
+    }
+
+    .grid-item-video {
+        background: black;
+        width: 100%;
+        height: 100%;
+    }
+
+    .grid-item-file {
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: rgb(82, 82, 83);
+        i {
+            font-size: 40px;
+            color: white;
+        }
+    }
+
+    .grid-item-check {
+        position: absolute;
+        top: 11px;
+        left: 11px;
+        width: 15px;
+        height: 15px;
+        border-radius: 50%;
+        border: solid 2px #fff;
+        display: block;
+        span {
+            position: relative;
+            top: 2px;
+            left: 2px;
+            width: 7px;
+            height: 7px;
+            display: block;
+            background: white;
+            border-radius: 50%;
+        }
+    }
+    .grid-item-title {
+        width: 100%;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        color: white;
+        background: linear-gradient(180deg, rgba(189, 72, 177, 0) 0%, rgba(0, 0, 0, 0.7) 100%);
+        span {
+            padding-left: 8px;
+        }
+    }
+}
+
+@import "package:angular_components/css/material/material";
+@import "package:angular_components/material_dialog/mixins";
+
+material-button[raised] {
+    background: $mat-blue;
+    color: $mat-white;
+    margin: 0 $mat-grid $mat-grid 0;
+}
+
+.basic-dialog,
+.basic-scrolling-dialog,
+.max-height-dialog,
+.headered-dialog {
+    width: $mat-grid * 60;
+
+    [footer] material-button:not([disabled]) {
+        color: $mat-blue;
+    }
+    [main]{
+        padding: 0  !important;
+    }
+}
+
+.basic-scrolling-dialog {
+    height: $mat-grid * 40;
+
+    [footer] {
+        padding-top: $mat-grid;
+    }
+}
+
+.max-height-dialog {
+    max-height: 60vh;
+
+    [footer] {
+        padding-top: $mat-grid;
+    }
+}
+
+.info-dialog {
+    width: $mat-grid * 40;
+}
+
+.dialog-with-error {
+    width: $mat-grid * 40;
+
+    material-button {
+        margin: $mat-grid 0;
+
+        &.close-button {
+            margin: $mat-grid 0 0 0;
+        }
+    }
+}
+
+.custom-colors-dialog {
+    @include material-dialog-header-color($mat-white);
+    @include material-dialog-header-shadow;
+    background-color: $mat-gray-100;
+    width: $mat-grid * 40;
+
+    [header] h3 {
+        color: $mat-transparent-black;
+    }
+}
+
+.no-header-footer-dialog {
+    @include material-dialog-body-padding;
+    width: $mat-grid * 40;
+
+    p {
+        margin: 0;
+        padding: $mat-grid * 3;
+    }
+
+    material-button {
+        margin: 0 0 $mat-grid * 3 $mat-grid * 3;
+    }
+}
+
+.fullscreen-dialog {
+    @include material-dialog-fullscreen($mat-grid * 100, $mat-grid * 80);
+    [header] {
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        material-button {
+            color: $mat-white;
+            margin-right: 0;
+        }
+    }
+
+    &.fullscreen-mode {
+        @include material-dialog-header-padding($mat-grid $mat-grid * 2);
+
+        [header] {
+            align-items: center;
+            display: flex;
+
+            material-button {
+                color: $mat-white;
+                margin-right: 0;
+            }
+
+            h1 {
+                margin: $mat-grid-type / 2 0 0;
+            }
+        }
+    }
+}

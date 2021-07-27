@@ -1,0 +1,32 @@
+* {
+    //for firefox
+    scrollbar-color: rgba(0, 0, 0, 0.15) rgba(255, 255, 255, 0);
+    scrollbar-width: auto;
+}
+
+::-webkit-scrollbar {
+    background: rgba(10, 255, 53, 0);
+    overflow: visible;
+    width: 8px;
+    height: 8px;
+    cursor: pointer;
+}
+::-webkit-scrollbar:hover {
+    color: rgba(2, 30, 66, 0);
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.15);
+    border-radius: 15px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.65);
+}
+::-webkit-scrollbar-thumb:window-inactive {
+    background-color: rgba(0, 0, 0, 0);
+}
+::-webkit-scrollbar-track-piece {
+    background-color: rgba(255, 255, 255, 0);
+}
+::-webkit-scrollbar-corner {
+    background: transparent;
+}

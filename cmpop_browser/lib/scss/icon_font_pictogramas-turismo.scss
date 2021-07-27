@@ -1,0 +1,588 @@
+@font-face {
+  font-family: "pictogramas-cmpop";
+  src: url("../assets/fonts/pictogramas-cmpop/pictogramas-cmpop.eot?52505257");
+  src: url("../assets/fonts/pictogramas-cmpop/pictogramas-cmpop.eot?52505257#iefix") format("embedded-opentype"),
+    url("../assets/fonts/pictogramas-cmpop/pictogramas-cmpop.woff2?52505257") format("woff2"),
+    url("../assets/fonts/pictogramas-cmpop/pictogramas-cmpop.woff?52505257") format("woff"),
+    url("../assets/fonts/pictogramas-cmpop/pictogramas-cmpop.ttf?52505257") format("truetype"),
+    url("../assets/fonts/pictogramas-cmpop/pictogramas-cmpop.svg?52505257#pictogramas-cmpop") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'pictogramas-cmpop';
+    src: url('../font/pictogramas-cmpop.svg?52505257#pictogramas-cmpop') format('svg');
+  }
+}
+*/
+
+[class^="pictogramas-cmpop-"]:before,
+[class*=" icon-"]:before {
+  font-family: "pictogramas-cmpop";
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  min-width: 1em;
+  display: inline-block;
+  text-align: center;
+  //font-size: 16px;
+  vertical-align: middle;
+  position: relative;
+  top: -1px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.pictogramas-cmpop-almoco:before {
+  content: "\e800";
+} /* '' */
+.pictogramas-cmpop-almoco-aceita-nao-hospedes:before {
+  content: "\e801";
+} /* '' */
+.pictogramas-cmpop-ar-condicionado:before {
+  content: "\e802";
+} /* '' */
+.pictogramas-cmpop-area-de-fumantes:before {
+  content: "\e803";
+} /* '' */
+.pictogramas-cmpop-brasao-filed:before {
+  content: "\e804";
+} /* '' */
+.pictogramas-cmpop-brasao-filed-2:before {
+  content: "\e805";
+} /* '' */
+.pictogramas-cmpop-brasao-filed-4:before {
+  content: "\e806";
+} /* '' */
+.pictogramas-cmpop-brasao-marcelino:before {
+  content: "\e807";
+} /* '' */
+.pictogramas-cmpop-brasao-outline:before {
+  content: "\e808";
+} /* '' */
+.pictogramas-cmpop-cafe-da-manha:before {
+  content: "\e809";
+} /* '' */
+.pictogramas-cmpop-cafe-da-manha-2:before {
+  content: "\e80a";
+} /* '' */
+.pictogramas-cmpop-calendario:before {
+  content: "\e80b";
+} /* '' */
+.pictogramas-cmpop-camera-ao-vivo:before {
+  content: "\e80c";
+} /* '' */
+.pictogramas-cmpop-camera-ao-vivo1:before {
+  content: "\e80d";
+} /* '' */
+.pictogramas-cmpop-camera-ao-vivo2:before {
+  content: "\e80e";
+} /* '' */
+.pictogramas-cmpop-camera-ao-vivo3:before {
+  content: "\e80f";
+} /* '' */
+.pictogramas-cmpop-carregador-de-celular:before {
+  content: "\e810";
+} /* '' */
+.pictogramas-cmpop-check:before {
+  content: "\e811";
+} /* '' */
+.pictogramas-cmpop-circuito-rural:before {
+  content: "\e812";
+} /* '' */
+.pictogramas-cmpop-close:before {
+  content: "\e813";
+} /* '' */
+.pictogramas-cmpop-comercio-local:before {
+  content: "\e814";
+} /* '' */
+.pictogramas-cmpop-comercio-local1:before {
+  content: "\e815";
+} /* '' */
+.pictogramas-cmpop-como-chegar:before {
+  content: "\e816";
+} /* '' */
+.pictogramas-cmpop-cozinha:before {
+  content: "\e817";
+} /* '' */
+.pictogramas-cmpop-cultura:before {
+  content: "\e818";
+} /* '' */
+.pictogramas-cmpop-cupom-de-desconto:before {
+  content: "\e819";
+} /* '' */
+.pictogramas-cmpop-cupon:before {
+  content: "\e81a";
+} /* '' */
+.pictogramas-cmpop-delivery:before {
+  content: "\e81b";
+} /* '' */
+.pictogramas-cmpop-dormitorio:before {
+  content: "\e81c";
+} /* '' */
+.pictogramas-cmpop-email:before {
+  content: "\e81d";
+} /* '' */
+.pictogramas-cmpop-endereco:before {
+  content: "\e81e";
+} /* '' */
+.pictogramas-cmpop-estacionamento:before {
+  content: "\e81f";
+} /* '' */
+.pictogramas-cmpop-estacionamento-para-motos:before {
+  content: "\e820";
+} /* '' */
+.pictogramas-cmpop-estacionamento-para-motos-2:before {
+  content: "\e821";
+} /* '' */
+.pictogramas-cmpop-eventos:before {
+  content: "\e822";
+} /* '' */
+.pictogramas-cmpop-excursao:before {
+  content: "\e823";
+} /* '' */
+.pictogramas-cmpop-extintores-de-incendio:before {
+  content: "\e824";
+} /* '' */
+.pictogramas-cmpop-facebbok:before {
+  content: "\e825";
+} /* '' */
+.pictogramas-cmpop-flor:before {
+  content: "\e826";
+} /* '' */
+.pictogramas-cmpop-guarda:before {
+  content: "\e827";
+} /* '' */
+.pictogramas-cmpop-home:before {
+  content: "\e828";
+} /* '' */
+.pictogramas-cmpop-hospedagem:before {
+  content: "\e829";
+} /* '' */
+.pictogramas-cmpop-info:before {
+  content: "\e82a";
+} /* '' */
+.pictogramas-cmpop-informacoes:before {
+  content: "\e82b";
+} /* '' */
+.pictogramas-cmpop-instagram:before {
+  content: "\e82c";
+} /* '' */
+.pictogramas-cmpop-jantar-aceita-nao-hospedes:before {
+  content: "\e82d";
+} /* '' */
+.pictogramas-cmpop-kraoke:before {
+  content: "\e82e";
+} /* '' */
+.pictogramas-cmpop-lavanderia:before {
+  content: "\e82f";
+} /* '' */
+.pictogramas-cmpop-localizacao:before {
+  content: "\e830";
+} /* '' */
+.pictogramas-cmpop-logo-marcelino:before {
+  content: "\e831";
+} /* '' */
+.pictogramas-cmpop-loja:before {
+  content: "\e832";
+} /* '' */
+.pictogramas-cmpop-maior-que:before {
+  content: "\e833";
+} /* '' */
+.pictogramas-cmpop-menor-que:before {
+  content: "\e834";
+} /* '' */
+.pictogramas-cmpop-menu:before {
+  content: "\e835";
+} /* '' */
+.pictogramas-cmpop-onde-comer:before {
+  content: "\e836";
+} /* '' */
+.pictogramas-cmpop-permitimos-animais:before {
+  content: "\e837";
+} /* '' */
+.pictogramas-cmpop-piscina:before {
+  content: "\e838";
+} /* '' */
+.pictogramas-cmpop-pontos-turisticos:before {
+  content: "\e839";
+} /* '' */
+.pictogramas-cmpop-praia:before {
+  content: "\e83a";
+} /* '' */
+.pictogramas-cmpop-pronto-socorro:before {
+  content: "\e83b";
+} /* '' */
+.pictogramas-cmpop-proximo-a-caixa-24h:before {
+  content: "\e83c";
+} /* '' */
+.pictogramas-cmpop-proximo-a-farmacias:before {
+  content: "\e83d";
+} /* '' */
+.pictogramas-cmpop-proximo-a-igrejas:before {
+  content: "\e83e";
+} /* '' */
+.pictogramas-cmpop-quartos:before {
+  content: "\e83f";
+} /* '' */
+.pictogramas-cmpop-rota:before {
+  content: "\e840";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico:before {
+  content: "\e841";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico1:before {
+  content: "\e842";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico2:before {
+  content: "\e843";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico3:before {
+  content: "\e844";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico4:before {
+  content: "\e845";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico5:before {
+  content: "\e846";
+} /* '' */
+.pictogramas-cmpop-roteiro-turistico6:before {
+  content: "\e847";
+} /* '' */
+.pictogramas-cmpop-servico-de-quarto:before {
+  content: "\e848";
+} /* '' */
+.pictogramas-cmpop-seta-a-esquerda:before {
+  content: "\e849";
+} /* '' */
+.pictogramas-cmpop-seta-tipo-s1:before {
+  content: "\e84a";
+} /* '' */
+.pictogramas-cmpop-seta-tipo-s2:before {
+  content: "\e84b";
+} /* '' */
+.pictogramas-cmpop-seta-tipo-s3:before {
+  content: "\e84c";
+} /* '' */
+.pictogramas-cmpop-seta-tipo-s4:before {
+  content: "\e84d";
+} /* '' */
+.pictogramas-cmpop-str-01-terminal-rodoviario:before {
+  content: "\e84e";
+} /* '' */
+.pictogramas-cmpop-str-02-terminal-ferroviario-e-metroviario:before {
+  content: "\e84f";
+} /* '' */
+.pictogramas-cmpop-str-03-aeroporto:before {
+  content: "\e850";
+} /* '' */
+.pictogramas-cmpop-str-04-heliporto:before {
+  content: "\e851";
+} /* '' */
+.pictogramas-cmpop-str-05-porto:before {
+  content: "\e852";
+} /* '' */
+.pictogramas-cmpop-str-06-transporte-sobre-agua:before {
+  content: "\e853";
+} /* '' */
+.pictogramas-cmpop-str-07-terminal-aquaviario:before {
+  content: "\e854";
+} /* '' */
+.pictogramas-cmpop-str-08-ponto-de-parada:before {
+  content: "\e855";
+} /* '' */
+.pictogramas-cmpop-sva-01-area-de-estacionamento:before {
+  content: "\e856";
+} /* '' */
+.pictogramas-cmpop-sva-02-informacoes-turisticas:before {
+  content: "\e857";
+} /* '' */
+.pictogramas-cmpop-sva-03-cambio:before {
+  content: "\e858";
+} /* '' */
+.pictogramas-cmpop-sva-04-correio:before {
+  content: "\e859";
+} /* '' */
+.pictogramas-cmpop-sva-05-rua-24-horas:before {
+  content: "\e85a";
+} /* '' */
+.pictogramas-cmpop-sva-06-servico-telefonico:before {
+  content: "\e85b";
+} /* '' */
+.pictogramas-cmpop-sva-07-servico-mecanico:before {
+  content: "\e85c";
+} /* '' */
+.pictogramas-cmpop-sva-08-borracharia:before {
+  content: "\e85d";
+} /* '' */
+.pictogramas-cmpop-sva-09-abastecimento:before {
+  content: "\e85e";
+} /* '' */
+.pictogramas-cmpop-sva-10-pronto-socorro:before {
+  content: "\e85f";
+} /* '' */
+.pictogramas-cmpop-sva-11-servico-sanitario:before {
+  content: "\e860";
+} /* '' */
+.pictogramas-cmpop-sva-12-restaurante:before {
+  content: "\e861";
+} /* '' */
+.pictogramas-cmpop-sva-13-hotel:before {
+  content: "\e862";
+} /* '' */
+.pictogramas-cmpop-sva-14-area-de-campismo:before {
+  content: "\e863";
+} /* '' */
+.pictogramas-cmpop-sva-15-estacionamento-de-trailler:before {
+  content: "\e864";
+} /* '' */
+.pictogramas-cmpop-tad-01-esportes:before {
+  content: "\e865";
+} /* '' */
+.pictogramas-cmpop-tad-02-esportes-equestres:before {
+  content: "\e866";
+} /* '' */
+.pictogramas-cmpop-tad-03-esportes-automobilisticos:before {
+  content: "\e867";
+} /* '' */
+.pictogramas-cmpop-tad-04-esportes-nauticos:before {
+  content: "\e868";
+} /* '' */
+.pictogramas-cmpop-tad-05-mergulho:before {
+  content: "\e869";
+} /* '' */
+.pictogramas-cmpop-tad-06-voo-livre:before {
+  content: "\e86a";
+} /* '' */
+.pictogramas-cmpop-tad-07-surfe:before {
+  content: "\e86b";
+} /* '' */
+.pictogramas-cmpop-tad-08-canoagem:before {
+  content: "\e86c";
+} /* '' */
+.pictogramas-cmpop-tad-09-pesca-submarina:before {
+  content: "\e86d";
+} /* '' */
+.pictogramas-cmpop-tad-10-pesca-esportiva:before {
+  content: "\e86e";
+} /* '' */
+.pictogramas-cmpop-tad-11-montanhismo:before {
+  content: "\e86f";
+} /* '' */
+.pictogramas-cmpop-tad-12-golfe:before {
+  content: "\e870";
+} /* '' */
+.pictogramas-cmpop-tad-13-aeroclube:before {
+  content: "\e871";
+} /* '' */
+.pictogramas-cmpop-tad-14-marina:before {
+  content: "\e872";
+} /* '' */
+.pictogramas-cmpop-tad-15-futebol:before {
+  content: "\e873";
+} /* '' */
+.pictogramas-cmpop-tad-16-ciclismo:before {
+  content: "\e874";
+} /* '' */
+.pictogramas-cmpop-tar-01-praca:before {
+  content: "\e875";
+} /* '' */
+.pictogramas-cmpop-tar-02-barco-de-passeio:before {
+  content: "\e876";
+} /* '' */
+.pictogramas-cmpop-tar-03-parque-urbano:before {
+  content: "\e877";
+} /* '' */
+.pictogramas-cmpop-tar-04-represa:before {
+  content: "\e878";
+} /* '' */
+.pictogramas-cmpop-tar-05-teleferico:before {
+  content: "\e879";
+} /* '' */
+.pictogramas-cmpop-tar-06-mirante:before {
+  content: "\e87a";
+} /* '' */
+.pictogramas-cmpop-tar-07-parque-de-diversoes:before {
+  content: "\e87b";
+} /* '' */
+.pictogramas-cmpop-telefone:before {
+  content: "\e87c";
+} /* '' */
+.pictogramas-cmpop-thc-01-arquitetura-religiosa:before {
+  content: "\e87d";
+} /* '' */
+.pictogramas-cmpop-thc-02-arquitetura-militar:before {
+  content: "\e87e";
+} /* '' */
+.pictogramas-cmpop-thc-03-arquitetura-historica:before {
+  content: "\e87f";
+} /* '' */
+.pictogramas-cmpop-thc-04-monumento:before {
+  content: "\e880";
+} /* '' */
+.pictogramas-cmpop-thc-05-museu:before {
+  content: "\e881";
+} /* '' */
+.pictogramas-cmpop-thc-06-ruina:before {
+  content: "\e882";
+} /* '' */
+.pictogramas-cmpop-thc-07-patrimonio-cultural:before {
+  content: "\e883";
+} /* '' */
+.pictogramas-cmpop-thc-08-sitio-arqueologico:before {
+  content: "\e884";
+} /* '' */
+.pictogramas-cmpop-thc-09-farol:before {
+  content: "\e885";
+} /* '' */
+.pictogramas-cmpop-thc-10-centro-de-cultura:before {
+  content: "\e886";
+} /* '' */
+.pictogramas-cmpop-thc-11-biblioteca:before {
+  content: "\e887";
+} /* '' */
+.pictogramas-cmpop-tit-01-festas-populares:before {
+  content: "\e888";
+} /* '' */
+.pictogramas-cmpop-tit-02-teatro:before {
+  content: "\e889";
+} /* '' */
+.pictogramas-cmpop-tit-03-convencoes:before {
+  content: "\e88a";
+} /* '' */
+.pictogramas-cmpop-tit-04-artesanato:before {
+  content: "\e88b";
+} /* '' */
+.pictogramas-cmpop-tit-05-zoologico:before {
+  content: "\e88c";
+} /* '' */
+.pictogramas-cmpop-tit-06-planetario:before {
+  content: "\e88d";
+} /* '' */
+.pictogramas-cmpop-tit-07-feira-tipica:before {
+  content: "\e88e";
+} /* '' */
+.pictogramas-cmpop-tit-08-exposicao-agropecuaria-2000:before {
+  content: "\e88f";
+} /* '' */
+.pictogramas-cmpop-tit-09-rodeio:before {
+  content: "\e890";
+} /* '' */
+.pictogramas-cmpop-tit-10-pavilhao-de-feiras-e-exposicoes:before {
+  content: "\e891";
+} /* '' */
+.pictogramas-cmpop-tna-01-montanha:before {
+  content: "\e892";
+} /* '' */
+.pictogramas-cmpop-tna-02-praia:before {
+  content: "\e893";
+} /* '' */
+.pictogramas-cmpop-tna-03-ilha:before {
+  content: "\e894";
+} /* '' */
+.pictogramas-cmpop-tna-04-riolagolagoa:before {
+  content: "\e895";
+} /* '' */
+.pictogramas-cmpop-tna-05-cachoeira:before {
+  content: "\e896";
+} /* '' */
+.pictogramas-cmpop-tna-06-patrimonio-natural:before {
+  content: "\e897";
+} /* '' */
+.pictogramas-cmpop-tna-07-gruta:before {
+  content: "\e898";
+} /* '' */
+.pictogramas-cmpop-tna-08-cmpop-rural:before {
+  content: "\e899";
+} /* '' */
+.pictogramas-cmpop-tna-09-estancia-hidromineral:before {
+  content: "\e89a";
+} /* '' */
+.pictogramas-cmpop-tv:before {
+  content: "\e89b";
+} /* '' */
+.pictogramas-cmpop-twitter:before {
+  content: "\e89c";
+} /* '' */
+.pictogramas-cmpop-website:before {
+  content: "\e89d";
+} /* '' */
+.pictogramas-cmpop-whatsapp:before {
+  content: "\e89e";
+} /* '' */
+.pictogramas-cmpop-wi-fi:before {
+  content: "\e89f";
+} /* '' */
+.pictogramas-cmpop-youtube:before {
+  content: "\e8a0";
+} /* '' */
+
+.pictogramas-cmpop-selo-jazz-1:before {
+  content: "\e8a1";
+}
+/*novos icones 08.07.2021 */
+
+.pictogramas-cmpop-logo-convida-1:before {
+  content: "\e8A2";
+}
+.pictogramas-cmpop-logo-convida-2:before {
+  content: "\e8A3";
+}
+.pictogramas-cmpop-acessibilidade:before {
+  content: "\e8A4";
+}
+.pictogramas-cmpop-adega:before {
+  content: "\e8A5";
+}
+.pictogramas-cmpop-area-kids:before {
+  content: "\e8A6";
+}
+.pictogramas-cmpop-caixa-eletronico:before {
+  content: "\e8A7";
+}
+.pictogramas-cmpop-caixa-eletronico-1:before {
+  content: "\e8A8";
+}
+.pictogramas-cmpop-caixa-eletronico-2:before {
+  content: "\e8A9";
+}
+.pictogramas-cmpop-espaco-fumantes:before {
+  content: "\e8AA";
+}
+.pictogramas-cmpop-farmacia:before {
+  content: "\e8AB";
+}
+.pictogramas-cmpop-frigobar:before {
+  content: "\e8AC";
+}
+.pictogramas-cmpop-pet-friendly:before {
+  content: "\e8AD";
+}
+.pictogramas-cmpop-recepcao:before {
+  content: "\e8AE";
+}
+.pictogramas-cmpop-sala-eventos:before {
+  content: "\e8AF";
+}
+.pictogramas-cmpop-sala-jogos:before {
+  content: "\e8B0";
+}
+.pictogramas-cmpop-sauna:before {
+  content: "\e8B1";
+}
+.pictogramas-cmpop-supermercado:before {
+  content: "\e8B2";
+}
+.pictogramas-cmpop-ventilador-teto:before {
+  content: "\e8B3";
+}
+.pictogramas-cmpop-guia-cmpop:before {
+  content: "\e8B4";
+}

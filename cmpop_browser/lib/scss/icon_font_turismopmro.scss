@@ -1,0 +1,106 @@
+@font-face {
+  font-family: 'cmpoppmro';
+  src: url('../assets/fonts/cmpoppmro/cmpoppmro.eot?68232412');
+  src: url('../assets/fonts/cmpoppmro/cmpoppmro.eot?68232412#iefix') format('embedded-opentype'),
+       url('../assets/fonts/cmpoppmro/cmpoppmro.woff2?68232412') format('woff2'),
+       url('../assets/fonts/cmpoppmro/cmpoppmro.woff?68232412') format('woff'),
+       url('../assets/fonts/cmpoppmro/cmpoppmro.ttf?68232412') format('truetype'),
+       url('../assets/fonts/cmpoppmro/cmpoppmro.svg?68232412#cmpoppmro') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+/* Chrome hack: SVG is rendered more smooth in Windozze. 100% magic, uncomment if you need it. */
+/* Note, that will break hinting! In other OS-es font will be not as sharp as it could be */
+/*
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  @font-face {
+    font-family: 'cmpoppmro';
+    src: url('../font/cmpoppmro.svg?68232412#cmpoppmro') format('svg');
+  }
+}
+*/
+ 
+ [class^="cmpoppmro-"]:before, [class*=" cmpoppmro-"]:before {
+  font-family: "cmpoppmro";
+  font-style: normal;
+  font-weight: normal;
+  speak: never; 
+  display: inline-block;
+  text-decoration: inherit;
+  width: 1em;
+  margin-right: .2em;
+  text-align: center;
+  /* opacity: .8; */ 
+  /* For safety - reset parent styles, that can break glyph codes*/
+  font-variant: normal;
+  text-transform: none; 
+  /* fix buttons height, for twitter bootstrap */
+  line-height: 1em; 
+  /* Animation center compensation - margins should be symmetric */
+  /* remove if not needed */
+  margin-left: .2em; 
+  /* you can be more comfortable with increased icons size */
+  /* font-size: 120%; */ 
+  /* Font smoothing. That was taken from TWBS */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; 
+  /* Uncomment for 3D effect */
+  /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+}
+ 
+.cmpoppmro-menu:before { content: '\e800'; } /* '' */
+.cmpoppmro-facebook:before { content: '\e801'; } /* '' */
+.cmpoppmro-instagram:before { content: '\e802'; } /* '' */
+.cmpoppmro-svg3:before { content: '\e803'; } /* '' */
+.cmpoppmro-youtube:before { content: '\e804'; } /* '' */
+.cmpoppmro-close:before { content: '\e805'; } /* '' */
+.cmpoppmro-home:before { content: '\e806'; } /* '' */
+.cmpoppmro-info:before { content: '\e807'; } /* '' */
+.cmpoppmro-praia:before { content: '\e808'; } /* '' */
+.cmpoppmro-cama:before { content: '\e809'; } /* '' */
+.cmpoppmro-comida:before { content: '\e80a'; } /* '' */
+.cmpoppmro-moto:before { content: '\e80b'; } /* '' */
+.cmpoppmro-loja:before { content: '\e80c'; } /* '' */
+.cmpoppmro-cartao:before { content: '\e80d'; } /* '' */
+.cmpoppmro-calendario:before { content: '\e80e'; } /* '' */
+.cmpoppmro-rota:before { content: '\e80f'; } /* '' */
+.cmpoppmro-voltar:before { content: '\e810'; } /* '' */
+.cmpoppmro-avancar:before { content: '\e811'; } /* '' */
+.cmpoppmro-retorno:before { content: '\e812'; } /* '' */
+.cmpoppmro-localizacao:before { content: '\e813'; } /* '' */
+.cmpoppmro-whatsapp:before { content: '\e814'; } /* '' */
+.cmpoppmro-phone:before { content: '\e815'; } /* '' */
+.cmpoppmro-email:before { content: '\e816'; } /* '' */
+.cmpoppmro-website:before { content: '\e817'; } /* '' */
+.cmpoppmro-svg26:before { content: '\e818'; } /* '' */
+.cmpoppmro-chave:before { content: '\e819'; } /* '' */
+.cmpoppmro-cafe:before { content: '\e81a'; } /* '' */
+.cmpoppmro-almoco:before { content: '\e81b'; } /* '' */
+.cmpoppmro-janta:before { content: '\e81c'; } /* '' */
+.cmpoppmro-cigarro:before { content: '\e81d'; } /* '' */
+.cmpoppmro-cafe2:before { content: '\e81f'; } /* '' */
+.cmpoppmro-carregador:before { content: '\e820'; } /* '' */
+.cmpoppmro-fogao:before { content: '\e821'; } /* '' */
+.cmpoppmro-moto2:before { content: '\e822'; } /* '' */
+.cmpoppmro-caro:before { content: '\e823'; } /* '' */
+.cmpoppmro-extintor:before { content: '\e824'; } /* '' */
+.cmpoppmro-lavanderia:before { content: '\e825'; } /* '' */
+.cmpoppmro-gato:before { content: '\e826'; } /* '' */
+.cmpoppmro-piscina:before { content: '\e827'; } /* '' */
+.cmpoppmro-dinheiro:before { content: '\e828'; } /* '' */
+.cmpoppmro-farmacia:before { content: '\e829'; } /* '' */
+.cmpoppmro-igreja:before { content: '\e82a'; } /* '' */
+.cmpoppmro-hospital:before { content: '\e82b'; } /* '' */
+.cmpoppmro-cozinha:before { content: '\e82c'; } /* '' */
+.cmpoppmro-tv:before { content: '\e82d'; } /* '' */
+.cmpoppmro-wifi:before { content: '\e82e'; } /* '' */
+.cmpoppmro-check:before { content: '\e82f'; } /* '' */
+.cmpoppmro-localizacao2:before { content: '\e830'; } /* '' */
+.cmpoppmro-dinheiro-1:before { content: '\e834'; } /* '' */
+.cmpoppmro-banheiro:before { content: '\e835'; } /* '' */
+.cmpoppmro-onibus:before { content: '\e836'; } /* '' */
+.cmpoppmro-trilhas:before { content: '\e837'; } /* '' */
+.cmpoppmro-observatorio:before { content: '\e838'; } /* '' */
+.cmpoppmro-flor:before { content: '\e839'; } /* '' */
+.cmpoppmro-arcondicionado:before { content: '\e83b'; } /* '' */
+.cmpoppmro-microfone:before { content: '\e83c'; } /* '' */

@@ -1,0 +1,7 @@
+#docker-compose.yml
+version: '3.3'    
+services:
+      cmpop_server:
+        build:
+          context: ./
+          dockerfile: ./cmpop_server/Dockerfile

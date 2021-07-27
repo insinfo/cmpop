@@ -1,0 +1,144 @@
+<div class="body p-10" #container>
+    <div class="standard-toolbar">
+        <div class="flex-start">
+            <a (click)="adicionar()" title="adicionar">
+                <i class="material-icons ">note_add</i>
+            </a>
+            <a (click)="refresh()" title="atualizar">
+                <i class="material-icons ">refresh</i>
+            </a>
+        </div>
+        <div class="flex-center">
+            <h5>Gerencia Categoria</h5>
+        </div>
+        <div class="flex-end">
+        </div>
+    </div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ativo</th>
+                    <th>Visível</th>
+                    <th>Icone</th>
+                    <th>Nome</th>
+                    <th>Descrição</th>
+                    <th>Cadastrado em</th>
+                    <th>Ordem</th>
+                    <th>Slug</th>
+                    <th>Editar</th>
+                    <th>Remover</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let cat of categorias">
+                    <td>{{cat.ativo ? 'Sim' : 'Não'}}</td>
+                    <td>{{cat.visivel ? 'Sim' : 'Não'}}</td>
+                    <td class="{{cat.icon}}"></td>
+                    <td>{{cat.titlePt}}</td>
+                    <td>{{cat.descriptionPt | truncate:30}}</td>
+                    <td>{{cat.dataCadastro | date : 'dd/MM/yyyy' }}</td>
+                    <td>{{cat.order}}</td>
+                    <td>{{cat.slug}}</td>
+                    <td>
+                        <a class="action-btn" (click)="editar(cat)" title="editar">
+                            <i class="material-icons">edit</i>
+                        </a>
+                    </td>
+                    <td>
+                        <a class="action-btn" (click)="remover(cat)" title="deletar">
+                            <i class="material-icons">clear</i>
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<modal [(visible)]="showModal">
+    <material-dialog headered class="fullscreen-dialog" [class.fullscreen-mode]="isInFullscreenMode"
+        [listenForFullscreenChanges]="true" (fullscreenMode)="isInFullscreenMode = $event">
+        <div header>
+            <h1>Formulário Categoria</h1>
+            <material-button icon (trigger)="showModal = false">
+                <material-icon icon="close"></material-icon>
+            </material-button>
+        </div>
+        <div *ngIf="categoria != null" >
+            <div *ngFor="let des of categoria.infos">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Idioma:</label>
+                        <select #selLang [(ngModel)]="des.lang" disabled
+                            [title]="selLang.options[selLang.selectedIndex].getAttribute('title')" class="form-control">
+                            <option *ngFor="let l of idiomaService.idiomasCadastrados" [value]="l.valor"
+                                [title]="l.titulo">
+                                {{l.label}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-5">
+                        <label>Título:</label>
+                        <input [(ngModel)]="des.title" type="text" class="form-control">
+                    </div>
+                    <div class="form-group col-md-12">
+                        <label>Descrição:</label>
+                        <textarea [(ngModel)]="des.content" rows="1" class="form-control"></textarea>
+                    </div>
+                </div>
+                <hr>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-1">
+                    <label>Ordem</label>
+                    <input [(ngModel)]="categoria.order" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-4">
+                    <label>Icon:</label>
+                    <select [(ngModel)]="categoria.icon" style="font-family: 'pictogramas-cmpop'"
+                        class="form-control">
+                        <option [value]="ic.className" *ngFor="let ic of iconsPictogramascmpop"
+                            style="font-size: 1.9rem;padding: 1rem;">
+                            <i [class]="ic.className" [innerHtml]="ic.label  + '   ' +  ic.htmlEntity "></i>
+                        </option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Tipo de ordenação</label>
+                    <select [(ngModel)]="categoria.tipoOrdenacao" class="form-control">
+                        <option value="randomizada" selected>Randomizada</option>
+                        <option value="alfabetica">Alfabética</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Ativo</label>
+                    <div class="custom-checkbox">
+                        <input id="categoriaAtivoCheckbox" [(ngModel)]="categoria.ativo" type="checkbox">
+                        <label for="categoriaAtivoCheckbox"></label>
+                    </div>
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Visível</label>
+                    <div class="custom-checkbox">
+                        <input id="categoriaVisivelCheckbox" [(ngModel)]="categoria.visivel" type="checkbox"
+                            class="form-control">
+                        <label for="categoriaVisivelCheckbox"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Slug</label>
+                    <input [(ngModel)]="categoria.slug" type="text" class="form-control">
+                </div>
+            </div>
+            <br>
+        </div>
+        <div footer class="form-footer">
+            <button class="btn btn-primary" type="button" (click)="cancelar()">Cancelar</button>
+            <button class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
+        </div>
+    </material-dialog>
+</modal>

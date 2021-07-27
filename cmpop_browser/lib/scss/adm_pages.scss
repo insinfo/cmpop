@@ -1,0 +1,159 @@
+.body {
+    position: relative;
+    
+    /*table {
+        background: transparent;
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        thead {
+            tr {
+                th {
+                    background: #fafafa;
+                    color: #252525;
+                    padding-top: 8px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    padding-bottom: 3px;
+                    vertical-align: bottom;
+                    line-height: 1.42857143;
+                    font-family: Roboto, sans-serif;
+                    font-weight: normal;
+                    border-bottom: 1px solid #ebebeb;
+                    vertical-align: middle;
+                }
+            }
+        }
+
+        tbody {
+            tr {
+                &:hover {
+                    background: rgba(238, 238, 238, 0.377);
+                    cursor: pointer;
+                }
+                td {
+                    background: none;
+                    padding-top: 8px;
+                    padding-left: 16px;
+                    padding-right: 16px;
+                    padding-bottom: 3px;
+                    vertical-align: middle;
+                    line-height: 1.42857143;
+                    border: none;
+                }
+            }
+        }
+
+        a.action-btn {
+            margin: 0 5px;
+            text-decoration: none;
+            cursor: pointer;
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }*/
+    .standard-toolbar {
+        display: flex;
+        margin-bottom: 10px;
+        .select-items-page {
+            width: 50px;
+            margin: 0;
+            padding: 0;
+        }
+
+        .flex-start {
+            flex: 1; /* shorthand for: flex-grow: 1, flex-shrink: 1, flex-basis: 0 */
+            display: flex;
+            justify-content: flex-start;
+            align-items: center;
+            a {
+                margin: 0 5px;
+                text-decoration: none;
+                cursor: pointer;
+
+                color: rgba(0, 0, 0, 0.5);
+            }
+        }
+
+        .flex-center {
+            flex: 1.5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .flex-end {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            a {
+                margin: 0 5px;
+                text-decoration: none;
+                cursor: pointer;
+                color: rgba(0, 0, 0, 0.5);
+            }
+        }
+    }
+
+  
+
+    .card-custom {
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.12), 0 1px 2px 0 rgba(0, 0, 0, 0.24);
+        border-radius: 5px;
+        background: white;
+        padding: 16px;
+    }
+}
+
+.form-footer {
+    padding: 10px;
+    display: inline-flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: flex-end;
+}
+.custom-input-wrapper {
+    background: #fcfcfc;
+    border: 1px solid #ececec;
+    border-radius: 6px;
+    padding: 10px;
+    padding-bottom: 2px;
+    width: 100%;
+    min-width: 60px;
+    min-height: 60px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    .tag {
+        display: block;
+        position: relative;
+        padding-top: 8px;
+        padding-bottom: 5px;
+        padding-right: 8px;
+        padding-left: 8px;
+        background: #5482e6;
+        margin-right: 10px;
+        margin-bottom: 10px;
+        min-width: 130px;
+        height: 40px;
+        color: white;
+        cursor: pointer;
+        a {
+            position: absolute;
+            right: -6px;
+            top: -7px;
+            display: block;
+            background: #f7131e;
+            color: white;
+            text-decoration: none;
+            border-radius: 50%;
+            line-height: 1;
+            padding-top: 1px;
+            padding-right: 5px;
+            padding-bottom: 3px;
+            padding-left: 5px;
+            font-size: 14px;
+            font-family: arial;
+        }
+    }
+}

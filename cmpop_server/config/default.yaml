@@ -1,0 +1,9 @@
+# Default server configuration.
+host: localhost
+#mongo_db: mongodb://localhost:27017/angel
+port: 3000
+postgres:
+  # database_name: angel
+  username: sisadmin
+  password: s1sadm1n
+jwt_secret: "YlQT9O9Uwl2Xj9x4xe9nZacLP1UrK3pd"

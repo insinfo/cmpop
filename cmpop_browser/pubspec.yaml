@@ -1,0 +1,39 @@
+name: cmpop_browser
+description: A web app that uses AngularDart Components
+# version: 1.0.0
+# homepage: https://www.example.com
+
+environment:
+  sdk: ">=2.10.0 <3.0.0"
+
+dependencies:
+  angular: ^6.0.0
+  angular_components: ^1.0.2
+  angular_router: ^2.0.0
+  angular_forms: ^3.0.0
+  #sembast_web: ^1.2.0
+  #angular_recaptcha: ^0.1.5
+  stream_transform: #^0.0.19
+  sass_builder: ^2.1.3
+  intl: ^0.16.1
+  uuid: ^2.2.2
+  crossplat_objectid: ^2.1.4  
+  http: ^0.12.2
+  #quiver: ^2.1.5
+  dart_browser_loader: ^0.1.0
+
+  cmpop_core:
+    path: ../cmpop_core
+
+dependency_overrides:
+  #to fix this bug https://github.com/angulardart/angular/issues/1967
+  #https://github.com/dart-lang/sdk/issues/46687
+ # meta: 1.6.0 
+
+dev_dependencies: 
+  angular_test: ^3.0.0                                                                                                 
+  build_runner: ^1.11.0 #^1.10.4                                                                                                   
+  build_test: ^1.3.0                                                                                              
+  build_web_compilers: ^2.12.0                                                                                
+  pedantic: ^1.9.2                                                                                               
+  test: ^1.15.4

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>teste</title>
+    <script src="dist/image-blob-reduce.js"></script>
+    <script>
+        var downloadBlob, downloadURL;
+        downloadBlob = function (data, fileName, mimeType) {
+            var blob, url;
+            blob = new Blob([data], {
+                type: mimeType
+            });
+            url = window.URL.createObjectURL(blob);
+            downloadURL(url, fileName);
+            setTimeout(function () {
+                return window.URL.revokeObjectURL(url);
+            }, 1000);
+        };
+        downloadURL = function (data, fileName) {
+            var a;
+            a = document.createElement('a');
+            a.href = data;
+            a.download = fileName;
+            document.body.appendChild(a);
+            a.style = 'display: none';
+            a.click();
+            a.remove();
+        };
+
+        async function readFileAsArrayBuffer(file) {
+            let result_base64 = await new Promise((resolve) => {
+                let fileReader = new FileReader();
+                fileReader.onload = (e) => resolve(fileReader.result);
+                fileReader.readAsArrayBuffer(file);
+            });
+            return result_base64;
+        }
+
+        window.onload = function (e) {
+            var inputFile = document.getElementById('file');
+            inputFile.onchange = async function (e) {
+                let t1 = performance.now();
+                var file = inputFile.files[0];
+                var buf = await readFileAsArrayBuffer(file);
+                var image_blob = new Blob([buf], {
+                    type: file.type
+                });
+                var api = ImageBlobReduce();
+              
+                api.toBlob(image_blob, { max: 1000 })
+                    .then(blob => {
+                        url = window.URL.createObjectURL(blob);
+                        downloadURL(url, 'some-file.jpg');
+                        console.log(performance.now() - t1);
+                    });
+
+
+            }
+        };
+
+
+    </script>
+</head>
+
+<body>
+    <h1>teste</h1>
+    <input type="file" id="file"><br>
+    <canvas id="canvas" width="640" height="480"></canvas>
+</body>
+
+</html>

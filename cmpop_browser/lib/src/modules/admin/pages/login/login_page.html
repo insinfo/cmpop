@@ -1,0 +1,16 @@
+<br><br>
+<div class="wrapper fadeInDown ">
+    <div id="formContent">
+        <!-- Tabs Titles -->
+        <h2 class="active"> Backoffice <span>Portal cmpop</span></h2>
+       
+        <!-- Login Form -->
+        <form (ngSubmit)="doLogin()">
+            <input [(ngModel)]="loginPayload.username" type="text" name="login" placeholder="Usuário">
+            <input [(ngModel)]="loginPayload.password" type="password" name="password">
+            <input type="submit" value="Entrar">
+            <br>
+        </form>
+    </div>
+</div>
+<br><br>

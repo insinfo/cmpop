@@ -1,0 +1,118 @@
+<div class="body p-10" #container>
+    <div class="standard-toolbar">
+        <div class="flex-start">
+            <a (click)="adicionar()" title="adicionar">
+                <i class="material-icons ">note_add</i>
+            </a>
+            <a (click)="refresh()" title="atualizar">
+                <i class="material-icons ">refresh</i>
+            </a>
+        </div>
+        <div class="flex-center">
+            <h5>Gerencia Menus</h5>
+        </div>
+        <div class="flex-end">
+        </div>
+    </div>
+    <div *ngIf="noContent">
+        <h1>Não ha praia cadastrada</h1>
+    </div>
+    <!-- Treeview  -->
+    <div *ngIf="!showForm">
+        <menu-treeview (selectOne)="editar($event)" [data]="menus"></menu-treeview>
+    </div>
+    <!-- /Treeview  -->
+    <!-- Formulario  -->
+    <div class="card" *ngIf="showForm">
+       
+            <div *ngFor="let des of menu.infos">
+                <div class="form-row">
+                    <div class="form-group col-md-2">
+                        <label>Idioma:</label>
+                        <select #selLang [(ngModel)]="des.lang" disabled
+                            [title]="selLang.options[selLang.selectedIndex].getAttribute('title')" class="form-control">
+                            <option *ngFor="let l of idiomaService.idiomasCadastrados" [value]="l.valor"
+                                [title]="l.titulo">
+                                {{l.label}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="form-group col-md-3">
+                        <label>Link Label:</label>
+                        <input [(ngModel)]="des.linkLabel" type="link" [maxlength]="120" class="form-control">
+                    </div>
+                </div>
+                <!--<hr>-->
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-2">
+                    <label>Tipo</label>
+                    <select title="Tipo" [(ngModel)]="menu.tipo" class="form-control">
+                        <option value="Header">Header</option>
+                        <option value="Footer">Footer</option>
+                        <option value="All">All</option>
+                    </select>
+                </div>
+                <div class="form-group col-md-3">
+                    <label>Destino</label>
+                    <select title="target" [(ngModel)]="menu.target" class="form-control">
+                        <option value="customPage">Pagina Customizada</option>
+                        <option value="_blank">_blank</option>
+                        <option value="internal">Internal</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-3">
+                    <label>Menu Pai </label>
+                    <input type="text" (click)="openModalForSetMenuPai()" value="{{menu?.parent?.linkLabelPt}}"
+                        class="form-control">
+                </div>
+                <div class="form-group col-md-1">
+                    <label title="Remover pai" style="display: block;">Remover pai</label>
+                    <a (click)="removeMenuPai(menu)"><i class="material-icons ">clear</i></a>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5" *ngIf="menu.target != 'customPage'">
+                    <label>Link</label>
+                    <input type="text" [(ngModel)]="menu.link" class="form-control">
+                </div>
+                <div class="form-group col-md-5" *ngIf="menu.target == 'customPage'">
+                    <label>Pagina:*</label>
+                    <select [(ngModel)]="menu.link" class="form-control">
+                        <option *ngFor="let pag of paginas" value="{{pag.slug}}">{{pag.nome}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group col-md-2">
+                    <label>Ordem:*</label>
+                    <input type="number" [(ngModel)]="menu.order" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Ativo:*</label>
+                    <div class="custom-checkbox">
+                        <input id="checkboxMenuAtivo" [(ngModel)]="menu.ativo" type="checkbox">
+                        <label for="checkboxMenuAtivo"></label>
+                    </div>
+                </div>
+            </div>
+            <div class="form-footer">
+                <button type="button" class="btn btn-primary" (click)="deletar(menu)">Deletar</button>
+                <button type="button" class="btn btn-primary" (click)="cancelar()">Cancelar</button>
+                <button type="button" class="btn btn-primary" (click)="salvar()">Salvar</button>
+            </div>
+       
+    </div>
+
+
+</div>
+
+<modal [(visible)]="showModalSelectMenuPai">
+    <material-dialog class="basic-dialog" style="min-width: 40vw;">
+        <menu-treeview (selectOne)="onSelectMenuPaiHandle($event)" [data]="menus"></menu-treeview>
+        <div footer>
+            <material-button raised (trigger)="showModalSelectMenuPai = false">Cancelar</material-button>
+        </div>
+    </material-dialog>
+</modal>

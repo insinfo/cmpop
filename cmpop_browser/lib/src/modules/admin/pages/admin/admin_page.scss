@@ -1,0 +1,107 @@
+//@import url("https://fonts.googleapis.com/css?family=Roboto");
+//@import url("https://fonts.googleapis.com/css?family=Material+Icons");
+
+@import "package:angular_components/app_layout/mixins";
+@import "package:angular_components/css/material/material";
+@import "package:angular_components/css/material/mixins";
+@import "package:angular_components/css/material/shadow";
+@import "package:angular_components/material_checkbox/mixins";
+@import "package:angular_components/material_input/mixins";
+@import "package:angular_components/material_dialog/mixins";
+@import "package:angular_components/material_select/mixins";
+
+:host {
+  width: 100%;
+  height: 100%;
+  min-height: 100%;
+}
+// ::ng-deep serve para aplicar o CSS em todos os filhos
+:host ::ng-deep {
+  color: #212121;
+  //font-family: Roboto, Noto, sans-serif;
+  font-family: Roboto, "Helvetica Neue", Arial, Helvetica, sans-serif;
+  font-size: 13px;
+  font-style: normal;
+  font-variant: normal;
+  font-weight: normal;
+
+  label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 0;
+    font-weight: normal;
+  }
+
+  //max-width: 100%;
+  
+}
+
+material-button[raised] {
+  background: $mat-blue;
+  color: $mat-white;
+  margin: 0 $mat-grid $mat-grid 0;
+}
+
+material-drawer {
+  @include material-scrollbar-theme($mat-blue);
+  h1 {
+    line-height: $mat-font-leading-subhead-1;
+    margin: $mat-grid-type * 5 $mat-grid * 2;
+    font-size: $mat-font-size-title;
+    font-weight: $mat-font-weight-medium;
+    a {
+      color: $mat-light-transparent-black;
+      text-decoration: none;
+    }
+  }
+
+  material-list {
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+
+  [group] > material-list-item {
+    color: $mat-transparent-black;
+    cursor: pointer;
+    font-weight: $mat-font-weight-regular;
+    font-size: $mat-font-size-body;
+    height: $mat-grid * 5;
+    &.router-link-active {
+      background: $mat-blue-50;
+      color: $mat-blue-700;
+      font-weight: $mat-font-weight-bold;
+    }
+    &.no-matches {
+      color: $mat-grey-500;
+      cursor: unset;
+    }
+  }
+  material-select-searchbox[label] {
+    @include material-input-leading-text-padding(0 $mat-grid-type 0 $mat-grid * 2);
+  }
+}
+
+material-content {
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  right: 0;
+  top: 0;
+  .material-header {
+    //  background-color: $mat-blue;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding-right: $mat-grid * 5;
+    @include material-checkbox-color($mat-orange-500);
+  }
+
+  .material-header-row {
+    flex-grow: 1;
+  }
+}

@@ -1,0 +1,18 @@
+<ul class="pagination" *ngIf="numPages > 1">
+    <li (click)="irParaPrimeiraPagina()" *ngIf="1 != currentPage" class="last-page-btn " title="Primeira pagina ">
+        <span class="material-icons">first_page</span>
+    </li>
+
+    <li *ngFor="let pg of paginationItems" [class.pagination__numbers]="pg.btnType == PaginationBtnType.page"
+        [class.active]="pg.active" [class.disabled]="pg.disabled"
+        [class.pagination__btn]="pg.btnType == PaginationBtnType.prev || pg.btnType == PaginationBtnType.next"
+        (click)="pg.onClick()">
+        <span class="material-icons" *ngIf="pg.btnType == PaginationBtnType.prev" title="anterior">chevron_left</span>
+        <span class="material-icons" *ngIf="pg.btnType == PaginationBtnType.next" title="proxima">chevron_right</span>
+        {{pg.page}}
+    </li>
+    <li (click)="irParaUltimaPagina()" *ngIf="numPages != currentPage" class="last-page-btn"
+        title="Última pagina ({{numPages}})">
+        <span class="material-icons">last_page</span>
+    </li>
+</ul>

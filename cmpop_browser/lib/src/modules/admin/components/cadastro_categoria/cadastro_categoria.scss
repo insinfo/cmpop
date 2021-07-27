@@ -1,0 +1,44 @@
+
+@import "package:angular_components/css/material/material";
+@import "package:angular_components/material_dialog/mixins";
+
+material-button[raised] {
+    background: $mat-blue;
+    color: $mat-white;
+    margin: 0 $mat-grid $mat-grid 0;
+}
+
+.fullscreen-dialog {
+    @include material-dialog-fullscreen($mat-grid * 100, $mat-grid * 80);
+    [header] {
+        align-items: center;
+        justify-content: space-between;
+        display: flex;
+        color: white;
+        i {
+            cursor: pointer;
+        }
+        material-button {
+            color: $mat-white;
+            margin-right: 0;
+        }
+    }
+    //min-width: 60vw;
+    &.fullscreen-mode {
+        @include material-dialog-header-padding($mat-grid $mat-grid * 2);
+
+        [header] {
+            align-items: center;
+            display: flex;
+
+            material-button {
+                color: $mat-white;
+                margin-right: 0;
+            }
+
+            h1 {
+                margin: $mat-grid-type / 2 0 0;
+            }
+        }
+    }
+}

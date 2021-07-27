@@ -1,0 +1,28 @@
+FROM google/dart:2.10 as cmpop_server
+WORKDIR /app
+ADD pubspec.* /app/
+COPY cmpop_core/ /cmpop_core
+RUN pub get --no-precompile
+ADD . /app
+RUN rm -r /app/cmpop_core
+RUN pub get --offline
+RUN cp .env.example.linux .env
+#RUN dart compile kernel -o bin/prod.dill bin/prod.dart
+
+FROM subfuzion/dart:slim as cmpop_server-jit
+COPY --from=cmpop_server /usr/lib/dart/bin/dart /usr/lib/dart/bin/dart
+COPY --from=cmpop_server /usr/lib/dart/lib/_internal/dartdev.dill /usr/lib/dart/lib/_internal/
+COPY --from=cmpop_server /root/.pub-cache /root/.pub-cache
+COPY --from=cmpop_server /app /app
+COPY --from=cmpop_server /app/.env /.env
+#COPY --from=cmpop_server /app/.env /app/bin/.env 
+#COPY --from=cmpop_server /app/.env /usr/lib/dart/bin/.env 
+ENV dbhost=localhost
+EXPOSE 3150
+#--disable-dart-dev
+ENTRYPOINT ["/usr/lib/dart/bin/dart","run","/app/bin/prod.dart", "-p", "3150", "-a" ,"0.0.0.0","--dbhost=$dbhost"]
+# docker build -f Dockerfile_jit -t cmpop_server-jit .
+# executa a imagem
+# docker run -e "dbhost=192.168.133.13" -d --name cmpop_server-jit -p 3150:3150 cmpop_server-jit   
+# docker run -e "dbhost=192.168.133.13" -i --name cmpop_server-jit -p 3150:3150 cmpop_server-jit   
+# docker run --rm -e "dbhost=192.168.133.13" -i --name cmpop_server-jit -p 3150:3150 cmpop_server-jit

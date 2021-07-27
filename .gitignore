@@ -1,0 +1,9 @@
+cmpop_server/cmpop_core/
+cmpop_server/cmpop_core
+cmpop_browser/cmpop_core/
+cmpop_browser/cmpop_core
+
+cmpop_server/download/
+cmpop_server/download
+
+data_rj.json

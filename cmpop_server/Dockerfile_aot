@@ -1,0 +1,55 @@
+FROM google/dart:2.10 as cmpop_server
+WORKDIR /app
+ADD pubspec.* /app/
+COPY cmpop_core/ /cmpop_core
+RUN pub get --no-precompile
+ADD . /app
+RUN rm -r /app/cmpop_core
+RUN pub get --offline
+RUN cp .env.example.linux /app/.env
+RUN dart compile exe /app/bin/prod.dart -o /app/bin/prod
+
+FROM subfuzion/dart:slim as cmpop_server-aot
+COPY --from=cmpop_server /bin/sh /bin/sh
+COPY --from=cmpop_server /bin/bash /bin/bash
+COPY --from=cmpop_server /bin/ls /bin/ls
+#libs for /bin/ls
+COPY --from=cmpop_server /lib/x86_64-linux-gnu/libpcre.so.3 /lib/x86_64-linux-gnu/libpcre.so.3
+COPY --from=cmpop_server /lib/x86_64-linux-gnu/libselinux.so.1 /lib/x86_64-linux-gnu/libselinux.so.1
+#libs for /bin/bash
+COPY --from=cmpop_server /lib/x86_64-linux-gnu/libtinfo.so.6 /lib/x86_64-linux-gnu/libtinfo.so.6
+COPY --from=cmpop_server /lib/x86_64-linux-gnu/libdl.so.2 /lib/x86_64-linux-gnu/libdl.so.2
+COPY --from=cmpop_server /lib/x86_64-linux-gnu/libc.so.6 /lib/x86_64-linux-gnu/libc.so.6
+
+COPY --from=cmpop_server /app/.env /app/bin/.env 
+COPY --from=cmpop_server /app/.env /.env
+COPY --from=cmpop_server /app/.env /usr/lib/.env
+COPY --from=cmpop_server /app/.env /usr/bin/.env
+COPY --from=cmpop_server /app/.env /root/.env
+COPY --from=cmpop_server /app/.env /tmp/.env
+COPY --from=cmpop_server /app/bin/prod /app/bin/prod
+#COPY --from=cmpop_server /app /app
+#variavel de tempo de criação de imagem
+#ARG dbhost
+#pode ser usada assim
+#docker build --build-arg dbhost=localhost
+#ou na hora de iniciar um container você pode passar variaves
+#ENV dbhost e na hora de executar docker run -e "dbhost=192.168.133.13"
+ENV dbhost=192.168.66.123
+#--no-precompile 
+# Optionally build generaed sources.
+# RUN pub run build_runner build
+#CMD ["sh", "-c", "/usr/bin/dart run bin/prod.dart -p 4002 -a 0.0.0.0 --dbhost ${dbhostr}"] -p 3150 -a 0.0.0.0 --dbhost=$dbhost
+EXPOSE 4002
+CMD sh -c cd /app/bin/ && /app/bin/prod -p 4002 -a 0.0.0.0 --dbhost=$dbhost
+#ENTRYPOINT ["/bin/bash"]
+#ENTRYPOINT ["/bin/sh -c ls"]
+#ENTRYPOINT ["/app/bin/prod"]
+#CMD ["/bin/dart", "run", "./bin/prod.dart","-p","3150","-a", "0.0.0.0","-dbhost=","$dbhost"]
+#ENTRYPOINT ["/usr/bin/dart", "run", "./bin/prod.dart","-p","3150","-a", "0.0.0.0","dbhost=",${dbhost}]
+# cria a imagem 
+# docker build -f Dockerfile_aot -t cmpop_server-aot .
+# executa a imagem
+#docker rm cmpop_server-aot 
+# docker run -e "dbhost=192.168.133.13" -d --name cmpop_server-aot -p 3150:3150 cmpop_server-aot   
+# docker run -e "dbhost=192.168.133.13" -i --name cmpop_server-aot -p 3150:3150 cmpop_server-aot    

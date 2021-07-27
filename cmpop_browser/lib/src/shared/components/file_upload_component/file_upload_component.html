@@ -1,0 +1,34 @@
+<input #inputFile type="file" class="file-input" [accept]="requiredFileType" (change)="onFileSelected(inputFile)"
+    #fileUpload [multiple]="multiple">
+
+<div class="file-upload">
+    <div class="no-file" *ngIf="files?.isEmpty == true">{{noFilesMessage }}</div>
+
+    <ul class="files" *ngIf="files?.isNotEmpty == true">
+        <li *ngFor="let f of files" title="{{f.name }}">
+            <div #inner class="inner" (click)="maxmize(inner)" tabindex="-0">
+                <img *ngIf="f.type?.startsWith('image/') == true" src="{{f.dataUrl}}">
+
+                <iframe *ngIf="f?.type?.startsWith('application/pdf') == true" src="{{f.dataUrl}}"
+                    frameBorder="0"></iframe>
+
+                <i *ngIf="f?.type?.startsWith('application/pdf') == false && f.type?.startsWith('image/') == false"
+                    class="material-icons">description</i>
+                <a class="close" *ngIf="isMaxmize" (click)="minimize($event, inner)" title="Fechar"></a>
+            </div>
+            <div class="file-name">{{f.name }}</div>
+            <button class="remove-file" type="button" (click)="removeFile(f)"><i
+                    class="material-icons">close</i></button>
+        </li>
+    </ul>
+
+
+    <button [disabled]="isLoadingFile" class="upload-btn" (click)="fileUpload.click()" type="button">
+        Selecione os arquivos <i class="material-icons">attach_file</i>
+        <!--file_upload-->
+    </button>
+
+</div>
+<small class="form-text text-muted">
+    Usando {{currentSizeInMegabytesStr}} megabytes do limite máximo de 24 megabytes
+</small>

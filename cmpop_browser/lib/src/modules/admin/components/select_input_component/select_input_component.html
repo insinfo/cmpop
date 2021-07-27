@@ -1,0 +1,17 @@
+<input *ngIf="type == 'select'" [class]="customInputClass" #input (click)="toggleList()"
+    [class.custom-input]="type == 'select'" (keyup)="inputKeypressHandle($event, input)" type="text"
+    value="{{itemSelected == null ? placeholder : itemSelected}}" [readonly]="readonly">
+
+<div *ngIf="type == 'fontIcon'" type="text" [class]="customInputClass" (click)="toggleList()"
+    [class.custom-input-fontIcon]="type == 'fontIcon'">
+    <div *ngIf="isCustomInputTemplate == false">{{itemSelected}}</div>
+    <template [ngTemplateOutlet]="customInputTemplate" [ngTemplateOutletValue]="itemSelected"></template>
+</div>
+
+<ul #list [class]="customListClass" [class.list-font-icon]="type == 'fontIcon'" [class.list-default]="type == 'select'"
+    [class.show]="isShowList">
+    <li *ngFor="let item of selectOptions" (click)="onSelect(item)">
+        <div *ngIf="isCustomOptionTemplate == false">{{item}}</div>
+        <template [ngTemplateOutlet]="customOptionTemplate" [ngTemplateOutletValue]="item"></template>
+    </li>
+</ul>

@@ -1,0 +1,19 @@
+<div class="slideshow-container" (mouseleave)='mouseleavePlay()' (mouseenter)='mouseenterPause()'>
+    <ng-content></ng-content>
+    <a class="slideshow-btn prev" (click)="plusSlides(-1)" *ngIf='slides.length > 1'>
+        <svg viewBox="0 0 100 100">
+            <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z"></path>
+        </svg>
+    </a>
+    <a class="slideshow-btn next" (click)="plusSlides(1)" *ngIf='slides.length > 1'>
+        <svg viewBox="0 0 100 100">
+            <path d="M 10,50 L 60,100 L 70,90 L 30,50  L 70,10 L 60,0 Z" transform="translate(100, 100) rotate(180) ">
+            </path>
+        </svg>
+    </a>
+    <!-- The dots/circles -->
+    <div class="dots" *ngIf='slides.length > 1'>
+        <span class="dot" [class.active]="s.active" *ngFor="let s of slides; let i = index"
+            (click)="currentSlide(i)"></span>
+    </div>
+</div>

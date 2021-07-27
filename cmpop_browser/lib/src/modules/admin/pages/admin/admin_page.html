@@ -1,0 +1,57 @@
+<div #container>
+    <material-drawer persistent #drawer="drawer">
+        <!--<[visible]="false"-->
+        <ng-container *deferredContent>
+
+            <h1 class="menuTitle">
+                <span title="Tempo de seção">{{authService.sessionTimeOut}}</span>
+                <button title="Fazer Logout" (click)="authService.doLogout()"
+                    style="border: none;background: none;">Sair</button>
+            </h1>
+
+            <!--autoFocus-->
+            <material-select-searchbox #searchbox label="Pesquisar" [filterable]="menuOptions">
+            </material-select-searchbox>
+            <material-list focusList>
+                <div label *ngIf="searchbox.inputText.isNotEmpty">Resultados de pesquisa</div>
+                <ng-container *ngFor="let menuGroup of menuOptions.optionGroups">
+                    <div group *ngIf="menuGroup?.isNotEmpty == true">
+                        <div label *ngIf="menuGroup.uiDisplayName.isNotEmpty">
+                            {{menuGroup.uiDisplayName}}
+                        </div>
+                        <material-list-item *ngFor="let example of menuGroup" focusItem [routerLink]="example.link"
+                            routerLinkActive="router-link-active" > <!--(trigger)="changeRouteHandle(example)"-->
+                            {{example?.displayName}}
+                            <!--<highlight-value [value]="example"></highlight-value>-->
+                        </material-list-item>
+                    </div>
+                </ng-container>
+                <material-list-item *ngIf="menuOptions.optionsList.isEmpty" class="no-matches" disabled>
+                    Não encontrado.
+                </material-list-item>
+                <br><br>
+            </material-list>
+        </ng-container>
+    </material-drawer>
+    <material-content>
+        <div class="container2">
+            <header class="material-header ">
+                <div class="material-header-row">
+                    <material-button icon class="material-drawer-button" (trigger)="drawer.toggle()">
+                        <material-icon icon="menu"></material-icon>
+                    </material-button>
+                    <span class="material-header-title" >
+                        {{tituloPagina}}
+                        <span id="breadcrumb" style="color: #ffffffad; font-weight: 400; font-size: 16px;">
+                            {{breadcrumb}}
+                        </span>
+                    </span>
+                </div>
+                <div class="key-nav">
+
+                </div>
+            </header>
+            <router-outlet [routes]="AdminRoutes.all"></router-outlet>
+        </div>
+    </material-content>
+</div>

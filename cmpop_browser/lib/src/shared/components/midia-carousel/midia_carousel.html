@@ -1,0 +1,18 @@
+<div #carouselWrapper class="carousel-wrapper" (mouseleave)='mouseleavePlay()' (mouseenter)='mouseenterPause()'>
+    <div class="carousel">
+        <!--  [class.initial]="i == 0" 
+        [class.prev]="totalItems >= 3 && i == totalItems - 1" 
+        [class.next]="totalItems >= 3 && i == 1"-->
+        <div #divs *ngFor="let m of midias; let i = index" class="carousel__photo" [class.initial]="i == 0" >
+            <img src="{{m.link}}">
+        </div>
+
+        <div *ngIf="totalItems > 1" class="carousel__button--next" (click)="moveNext($event)"></div>
+        <div *ngIf="totalItems > 1" class="carousel__button--prev" (click)="movePrev($event)"></div>
+
+        <div class="dots" *ngIf='totalItems > 1 && showDots'>
+            <span class="dot"  *ngFor="let s of midias; let i = index" [class.active]="currentSlide == i"
+                (click)="setSlide(i)"></span>
+        </div>
+    </div>
+</div>

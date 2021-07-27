@@ -1,0 +1,98 @@
+<div class="body p-10" #container>
+    <div class="standard-toolbar">
+        <div class="flex-start">
+            <a (click)="adicionar()" title="adicionar">
+                <i class="material-icons ">note_add</i>
+            </a>
+            <a (click)="refresh()" title="atualizar">
+                <i class="material-icons ">refresh</i>
+            </a>
+        </div>
+        <div class="flex-center">
+            <h5>Gerencia Usuário</h5>
+        </div>
+        <div class="flex-end">
+        </div>
+    </div>
+    <div class="card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Ativo</th>
+                    <th>CPF</th>
+                    <th>Nome</th>
+                    <th>Username</th>
+                    <th>Cadastrado em</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let u of usuarios">
+                    <td>{{u.ativo ? 'Sim' : 'Não'}}</td>
+                    <td>{{u.cpf}}</td>
+                    <td>{{u.nome}}</td>
+                    <td>{{u.username}}</td>
+                    <td>{{u.dataCadastro | date : 'dd/MM/yyyy - HH:mm' }}</td>
+                    <td>
+                        <a class="action-btn" (click)="editar(u)" title="editar">
+                            <i class="material-icons">edit</i>
+                        </a>
+                        <!--<material-fab mini raised class="green" (click)="editar(u)">
+                            <material-icon icon="create"></material-icon>
+                        </material-fab>-->
+                    </td>
+                    <!-- <td>
+                        <material-fab style="display: none;" mini raised class="red" (click)="prepararExclusao(u)">
+                            <material-icon icon="clear"></material-icon>
+                        </material-fab>
+                    </td>-->
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+</div>
+
+<modal [(visible)]="showModal">
+    <material-dialog headered class="fullscreen-dialog" [listenForFullscreenChanges]="true">
+        <div header>
+            <h1>Formulário Usuario</h1>
+            <i class="material-icons modal-close-btn" (click)="showModal = false">close</i>
+        </div>
+        <div class="" #modalContainer>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <label>CPF</label>
+                    <input [(ngModel)]="usuario.cpf" [disabled]="isEditing" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <label>Nome</label>
+                    <input [(ngModel)]="usuario.nome" [disabled]="isEditing" type="text" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-5">
+                    <label>Usuário</label>
+                    <input [(ngModel)]="usuario.username" [disabled]="isEditing" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-5">
+                    <label>Senha</label>
+                    <input [(ngModel)]="usuario.password" type="text" class="form-control">
+                </div>
+                <div class="form-group col-md-2">
+                    <label>Ativo</label>
+                    <div class="custom-checkbox">
+                        <input id="usuarioAtivoCheckbox" [(ngModel)]="usuario.ativo" type="checkbox">
+                        <label for="usuarioAtivoCheckbox"></label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div footer class="form-footer">
+            <button class="btn btn-primary" type="button" (click)="cancelar()">Cancelar</button>
+            <button class="btn btn-primary" type="button" (click)="salvar()">Salvar</button>
+        </div>
+
+    </material-dialog>
+</modal>
